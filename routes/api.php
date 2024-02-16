@@ -20,3 +20,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get('/blog', [BlogAc::class, 'index']);
+Route::get('/blog/{slug}', [BlogAc::class, 'detail']);

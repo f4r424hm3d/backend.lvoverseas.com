@@ -10,8 +10,18 @@ class BlogAc extends Controller
 {
   public function index(Request $request)
   {
-    $blogs = Blog::with('getCategory')->paginate(10);
+    $blogs = Blog::with('getCategory', 'getUser')->paginate(10);
 
     return response()->json($blogs);
+  }
+  public function detail($slug)
+  {
+    $blog = Blog::with('getCategory', 'getUser')->where('slug', $slug)->first();
+
+    if (!$blog) {
+      return response()->json(['message' => 'Blog not found'], 404);
+    }
+
+    return response()->json($blog);
   }
 }
