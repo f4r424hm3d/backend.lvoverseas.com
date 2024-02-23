@@ -18,6 +18,7 @@ use App\Http\Controllers\admin\BlogC;
 use App\Http\Controllers\admin\BlogCategoryC;
 use App\Http\Controllers\admin\DynamicPageSeoC;
 use App\Http\Controllers\admin\GalleryC;
+use App\Http\Controllers\admin\InstituteTypeC;
 use App\Http\Controllers\admin\ServiceC;
 use App\Http\Controllers\admin\UploadFilesC;
 use App\Models\Blog;
@@ -258,6 +259,13 @@ Route::middleware(['adminLoggedIn'])->group(function () {
       Route::post('/store-ajax', [UploadFilesC::class, 'storeAjax']);
       Route::get('/update/{id}', [UploadFilesC::class, 'index']);
       Route::post('/update/{id}', [UploadFilesC::class, 'update']);
+    });
+    Route::prefix('/institute-types')->group(function () {
+      Route::get('', [InstituteTypeC::class, 'index']);
+      Route::post('/store/', [InstituteTypeC::class, 'store']);
+      Route::get('/delete/{id}/', [InstituteTypeC::class, 'delete']);
+      Route::get('/update/{id}/', [InstituteTypeC::class, 'index']);
+      Route::post('/update/{id}/', [InstituteTypeC::class, 'update']);
     });
   });
 });
