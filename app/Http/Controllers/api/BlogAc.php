@@ -10,7 +10,13 @@ class BlogAc extends Controller
 {
   public function index(Request $request)
   {
-    $blogs = Blog::with('getCategory', 'getUser')->paginate(10);
+    $blogs = Blog::with('getCategory', 'getUser')->get();
+
+    return response()->json($blogs);
+  }
+  public function blogWithPaginate(Request $request)
+  {
+    $blogs = Blog::with('getCategory', 'getUser')->get();
 
     return response()->json($blogs);
   }

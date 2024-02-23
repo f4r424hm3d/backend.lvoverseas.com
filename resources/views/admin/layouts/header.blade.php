@@ -267,6 +267,25 @@
                 </div>
               </li>
               <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
+                  <i data-feather="file-text"></i>
+                  <span data-key="t-extra-pages">Destinations</span>
+                  <div class="arrow-down"></div>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="topnav-more">
+                  <div class="dropdown">
+                    <a class="dropdown-item dropdown-toggle arrow-none" href="{{ aurl('Destinations') }}"
+                      id="topnav-auth" role="button">
+                      <span data-key="t-authentication">Destination</span>
+                    </a>
+                    <a class="dropdown-item dropdown-toggle arrow-none" href="{{ aurl('Destination-tabs') }}"
+                      id="topnav-auth" role="button">
+                      <span data-key="t-authentication">Destination Tab</span>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" href="{{ aurl('upload-files') }}"
                   id="topnav-dashboard" role="button" title="Dashboard">
                   <i data-feather="file-text"></i> Upload Files

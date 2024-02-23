@@ -11,11 +11,10 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('upload_files', function (Blueprint $table) {
+    Schema::create('destination_page_tabs', function (Blueprint $table) {
       $table->id();
-      $table->string('title', 100)->nullable();
-      $table->text('file_name');
-      $table->text('file_path');
+      $table->string('tab', 200);
+      $table->string('slug', 200);
       $table->timestamps();
     });
   }
@@ -25,6 +24,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('upload_files');
+    Schema::dropIfExists('destination_page_tabs');
   }
 };

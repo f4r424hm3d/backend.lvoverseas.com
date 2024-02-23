@@ -4,6 +4,11 @@ use App\Http\Controllers\admin\AddressC;
 use App\Http\Controllers\admin\AdminDashboard;
 use App\Http\Controllers\admin\AdminLogin;
 use App\Http\Controllers\admin\AuthorC;
+use App\Http\Controllers\admin\DestinationC;
+use App\Http\Controllers\admin\DestinationContentC;
+use App\Http\Controllers\admin\DestinationGalleryC;
+use App\Http\Controllers\admin\DestinationPageFaqC;
+use App\Http\Controllers\admin\DestinationTabC;
 use App\Http\Controllers\admin\SeoC;
 use App\Http\Controllers\admin\TreatmentC;
 use App\Http\Controllers\admin\ServiceContentC;
@@ -124,6 +129,42 @@ Route::middleware(['adminLoggedIn'])->group(function () {
     Route::get('/dashboard/', [AdminDashboard::class, 'index']);
     Route::get('/profile/', [AdminDashboard::class, 'profile']);
     Route::post('/update-profile/', [AdminDashboard::class, 'updateProfile']);
+
+    Route::prefix('/destinations')->group(function () {
+      Route::get('', [DestinationC::class, 'index']);
+      Route::post('/store/', [DestinationC::class, 'store']);
+      Route::get('/delete/{id}/', [DestinationC::class, 'delete']);
+      Route::get('/update/{id}/', [DestinationC::class, 'index']);
+      Route::post('/update/{id}/', [DestinationC::class, 'update']);
+    });
+    Route::prefix('/destination-content/')->group(function () {
+      Route::get('/delete/{id}/', [DestinationContentC::class, 'delete']);
+      Route::get('{page_id}/{tab_id?}/', [DestinationContentC::class, 'index']);
+      Route::post('store/', [DestinationContentC::class, 'store']);
+      Route::get('{page_id}/{tab_id}/update/{id}/', [DestinationContentC::class, 'index']);
+      Route::post('update/{id}/', [DestinationContentC::class, 'update']);
+    });
+    Route::prefix('/destination-gallery/')->group(function () {
+      Route::get('/delete/{id}/', [DestinationGalleryC::class, 'delete']);
+      Route::get('{destination_id}/', [DestinationGalleryC::class, 'index']);
+      Route::post('store/', [DestinationGalleryC::class, 'store']);
+      Route::get('{destination_id}/update/{id}/', [DestinationGalleryC::class, 'index']);
+      Route::post('update/{id}/', [DestinationGalleryC::class, 'update']);
+    });
+    Route::prefix('/destination-faq/')->group(function () {
+      Route::get('/delete/{id}/', [DestinationPageFaqC::class, 'delete']);
+      Route::get('{page_id}/', [DestinationPageFaqC::class, 'index']);
+      Route::post('store/', [DestinationPageFaqC::class, 'store']);
+      Route::get('{page_id}/update/{id}/', [DestinationPageFaqC::class, 'index']);
+      Route::post('update/{id}/', [DestinationPageFaqC::class, 'update']);
+    });
+    Route::prefix('/destination-tabs')->group(function () {
+      Route::get('', [DestinationTabC::class, 'index']);
+      Route::post('/store/', [DestinationTabC::class, 'store']);
+      Route::get('/delete/{id}/', [DestinationTabC::class, 'delete']);
+      Route::get('/update/{id}/', [DestinationTabC::class, 'index']);
+      Route::post('/update/{id}/', [DestinationTabC::class, 'update']);
+    });
 
     Route::prefix('/gallery')->group(function () {
       Route::get('', [GalleryC::class, 'index']);

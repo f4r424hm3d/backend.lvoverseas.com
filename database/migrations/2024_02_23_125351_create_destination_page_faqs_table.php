@@ -11,11 +11,13 @@ return new class extends Migration
    */
   public function up(): void
   {
-    Schema::create('upload_files', function (Blueprint $table) {
+    Schema::create('destination_page_faqs', function (Blueprint $table) {
       $table->id();
-      $table->string('title', 100)->nullable();
-      $table->text('file_name');
-      $table->text('file_path');
+      $table->text('question');
+      $table->longText('answer');
+      $table->boolean('status')->default(1);
+      $table->unsignedBigInteger('page_id')->nullable();
+      $table->foreign('page_id')->references('id')->on('destinations')->nullOnDelete();
       $table->timestamps();
     });
   }
@@ -25,6 +27,6 @@ return new class extends Migration
    */
   public function down(): void
   {
-    Schema::dropIfExists('upload_files');
+    Schema::dropIfExists('destination_page_faqs');
   }
 };
