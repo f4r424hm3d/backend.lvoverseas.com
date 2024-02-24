@@ -11,6 +11,10 @@ use App\Http\Controllers\admin\DestinationPageFaqC;
 use App\Http\Controllers\admin\DestinationTabC;
 use App\Http\Controllers\admin\SeoC;
 use App\Http\Controllers\admin\TreatmentC;
+use App\Http\Controllers\admin\UniversityC;
+use App\Http\Controllers\admin\UniversityGalleryC;
+use App\Http\Controllers\admin\UniversityOverviewC;
+use App\Http\Controllers\admin\UniversityVideoGalleryC;
 use App\Http\Controllers\admin\ServiceContentC;
 use App\Http\Controllers\admin\UserC;
 use App\Http\Controllers\CommonController;
@@ -266,6 +270,36 @@ Route::middleware(['adminLoggedIn'])->group(function () {
       Route::get('/delete/{id}/', [InstituteTypeC::class, 'delete']);
       Route::get('/update/{id}/', [InstituteTypeC::class, 'index']);
       Route::post('/update/{id}/', [InstituteTypeC::class, 'update']);
+    });
+    Route::prefix('/university')->group(function () {
+      Route::get('add', [UniversityC::class, 'add']);
+      Route::get('', [UniversityC::class, 'index']);
+      Route::post('/store/', [UniversityC::class, 'store']);
+      Route::get('/delete/{id}/', [UniversityC::class, 'delete']);
+      Route::get('/update/{id}/', [UniversityC::class, 'index']);
+      Route::post('/update/{id}/', [UniversityC::class, 'update']);
+      Route::post('/import/', [UniversityC::class, 'import']);
+    });
+    Route::prefix('/university-overview')->group(function () {
+      Route::get('/{university_id}', [UniversityOverviewC::class, 'index']);
+      Route::post('/{university_id}/store', [UniversityOverviewC::class, 'store']);
+      Route::get('/delete/{id}/', [UniversityOverviewC::class, 'delete']);
+      Route::get('/{university_id}/update/{id}/', [UniversityOverviewC::class, 'index']);
+      Route::post('/{university_id}/update/{id}/', [UniversityOverviewC::class, 'update']);
+    });
+    Route::prefix('/university-gallery')->group(function () {
+      Route::get('/{university_id}', [UniversityGalleryC::class, 'index']);
+      Route::post('/{university_id}/store', [UniversityGalleryC::class, 'store']);
+      Route::get('/delete/{id}/', [UniversityGalleryC::class, 'delete']);
+      Route::get('/{university_id}/update/{id}/', [UniversityGalleryC::class, 'index']);
+      Route::post('/{university_id}/update/{id}/', [UniversityGalleryC::class, 'update']);
+    });
+    Route::prefix('/university-video-gallery')->group(function () {
+      Route::get('/{university_id}', [UniversityVideoGalleryC::class, 'index']);
+      Route::post('/{university_id}/store', [UniversityVideoGalleryC::class, 'store']);
+      Route::get('/delete/{id}/', [UniversityVideoGalleryC::class, 'delete']);
+      Route::get('/{university_id}/update/{id}/', [UniversityVideoGalleryC::class, 'index']);
+      Route::post('/{university_id}/update/{id}/', [UniversityVideoGalleryC::class, 'update']);
     });
   });
 });
