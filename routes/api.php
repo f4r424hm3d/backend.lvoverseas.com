@@ -33,7 +33,7 @@ Route::get('/gallery', [GalleryAc::class, 'index']);
 
 Route::get('/destinations', [DestinationAc::class, 'index']);
 Route::get('/destination/{slug}', [DestinationAc::class, 'detail']);
-Route::get('/destination/{page_id}', [DestinationAc::class, 'desContent']);
+Route::get('/destination-content/{page_id}', [DestinationAc::class, 'desContent']);
 Route::get('/destination-gallery/{destination_id}', [DestinationAc::class, 'gallery']);
 Route::get('/destination-faqs/{page_id}', [DestinationAc::class, 'faqs']);
 

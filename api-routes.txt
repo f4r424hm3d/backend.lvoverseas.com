@@ -6,7 +6,7 @@ https://www.backend.lvoverseas.com/api/service/service_slug
 
 https://www.backend.lvoverseas.com/api/destinations
 https://www.backend.lvoverseas.com/api/destination/slug
-https://www.backend.lvoverseas.com/api/destination/page_id
+https://www.backend.lvoverseas.com/api/destination-content/page_id
 https://www.backend.lvoverseas.com/api/destination-gallery/{destination_id}
 https://www.backend.lvoverseas.com/api/destination-faqs/{page_id}
 
