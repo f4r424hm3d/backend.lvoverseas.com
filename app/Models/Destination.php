@@ -7,5 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Destination extends Model
 {
-    use HasFactory;
+  use HasFactory;
+  public function author()
+  {
+    return $this->hasOne(User::class, 'id', 'author_id');
+  }
 }

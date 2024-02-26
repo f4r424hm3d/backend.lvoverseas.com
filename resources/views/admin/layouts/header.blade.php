@@ -278,10 +278,10 @@
                       id="topnav-auth" role="button">
                       <span data-key="t-authentication">Destination</span>
                     </a>
-                    <a class="dropdown-item dropdown-toggle arrow-none" href="{{ aurl('Destination-tabs') }}"
+                    {{-- <a class="dropdown-item dropdown-toggle arrow-none" href="{{ aurl('Destination-tabs') }}"
                       id="topnav-auth" role="button">
                       <span data-key="t-authentication">Destination Tab</span>
-                    </a>
+                    </a> --}}
                   </div>
                 </div>
               </li>

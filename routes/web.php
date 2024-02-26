@@ -144,10 +144,10 @@ Route::middleware(['adminLoggedIn'])->group(function () {
     });
     Route::prefix('/destination-content/')->group(function () {
       Route::get('/delete/{id}/', [DestinationContentC::class, 'delete']);
-      Route::get('{page_id}/{tab_id?}/', [DestinationContentC::class, 'index']);
       Route::post('store/', [DestinationContentC::class, 'store']);
-      Route::get('{page_id}/{tab_id}/update/{id}/', [DestinationContentC::class, 'index']);
       Route::post('update/{id}/', [DestinationContentC::class, 'update']);
+      Route::get('{page_id}/', [DestinationContentC::class, 'index']);
+      Route::get('{page_id}/update/{id}/', [DestinationContentC::class, 'index']);
     });
     Route::prefix('/destination-gallery/')->group(function () {
       Route::get('/delete/{id}/', [DestinationGalleryC::class, 'delete']);
