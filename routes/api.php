@@ -4,6 +4,7 @@ use App\Http\Controllers\api\BlogAc;
 use App\Http\Controllers\api\DestinationAc;
 use App\Http\Controllers\api\GalleryAc;
 use App\Http\Controllers\api\ServiceAc;
+use App\Http\Controllers\api\TestimonialAc;
 use App\Http\Controllers\api\UniversityAc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,3 +46,5 @@ Route::get('/university-photos/{university_id}', [UniversityAc::class, 'photos']
 Route::get('/university-videos/{university_id}', [UniversityAc::class, 'videos']);
 
 Route::get('/universities-by-destination/{destination_id}', [UniversityAc::class, 'universityBydestination']);
+
+Route::get('/testimonials', [TestimonialAc::class, 'index']);
