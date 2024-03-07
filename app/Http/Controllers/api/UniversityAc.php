@@ -57,4 +57,9 @@ class UniversityAc extends Controller
 
     return response()->json($rows);
   }
+  public function universityBydestination(Request $request, $destination_id)
+  {
+    $rows = University::select('id', 'name', 'slug')->where('destination_id', $destination_id)->get();
+    return response()->json($rows);
+  }
 }

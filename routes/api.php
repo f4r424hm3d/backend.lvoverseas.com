@@ -43,3 +43,5 @@ Route::get('/university/{slug}', [UniversityAc::class, 'detail']);
 Route::get('/university-overviews/{university_id}', [UniversityAc::class, 'overviews']);
 Route::get('/university-photos/{university_id}', [UniversityAc::class, 'photos']);
 Route::get('/university-videos/{university_id}', [UniversityAc::class, 'videos']);
+
+Route::get('/universities-by-destination/{destination_id}', [UniversityAc::class, 'universityBydestination']);
