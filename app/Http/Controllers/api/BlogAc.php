@@ -14,6 +14,12 @@ class BlogAc extends Controller
 
     return response()->json($blogs);
   }
+  public function latestBlogs(Request $request, $no = 10)
+  {
+    $blogs = Blog::with('getCategory')->orderBy('id', 'desc')->limit($no)->get();
+
+    return response()->json($blogs);
+  }
   public function blogWithPaginate(Request $request)
   {
     $blogs = Blog::with('getCategory', 'getUser')->get();

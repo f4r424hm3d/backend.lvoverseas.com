@@ -27,6 +27,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/blog', [BlogAc::class, 'index']);
 Route::get('/blog/{slug}', [BlogAc::class, 'detail']);
+Route::get('/latest-blog/{no?}', [BlogAc::class, 'latestBlogs']);
 
 Route::get('/services', [ServiceAc::class, 'index']);
 Route::get('/service/{slug}', [ServiceAc::class, 'detail']);
