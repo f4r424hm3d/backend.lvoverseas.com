@@ -131,6 +131,8 @@ class UniversityC extends Controller
     $field->meta_keyword = $request['meta_keyword'];
     $field->meta_description = $request['meta_description'];
     $field->page_content = $request['page_content'];
+    $field->top_description = $request['top_description'];
+    $field->bottom_description = $request['bottom_description'];
     $field->status = 1;
     $field->save();
     session()->flash('smsg', 'New record has been added successfully.');
@@ -214,6 +216,8 @@ class UniversityC extends Controller
     $field->meta_keyword = $request['meta_keyword'];
     $field->meta_description = $request['meta_description'];
     $field->page_content = $request['page_content'];
+    $field->top_description = $request['top_description'];
+    $field->bottom_description = $request['bottom_description'];
     $field->save();
     session()->flash('smsg', 'Record has been updated successfully.');
     return redirect('admin/university');

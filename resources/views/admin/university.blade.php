@@ -118,6 +118,16 @@
                     <button onclick="togglebrochureUpload('uploadBroBtn')" type="button"
                       class="btn btn-xs btn-info col-btn"><small>Upload File</small></button>
                   </div>
+                  <div class="col-md-12 col-sm-12 mb-3">
+                    <x-TextareaField type="file" label="Top Description" name="top_description"
+                      id="top_description" :ft="$ft" :sd="$sd">
+                    </x-TextareaField>
+                  </div>
+                  <div class="col-md-12 col-sm-12 mb-3">
+                    <x-TextareaField type="file" label="Bottom Description" name="bottom_description"
+                      id="bottom_description" :ft="$ft" :sd="$sd">
+                    </x-TextareaField>
+                  </div>
                 </div>
                 <hr>
 
@@ -181,6 +191,7 @@
                     <th>Logo/Banner</th>
                     <th>Brochure</th>
                     <th>Permission</th>
+                    <th>Description</th>
                     <th>SEO</th>
                     <th>Action</th>
                   </tr>
@@ -261,6 +272,38 @@
                             </tr>
                           </tbody>
                         </table>
+                      </td>
+                      <td>
+                        @if ($row->top_description != null)
+                          <button type="button" class="btn btn-xs btn-outline-info waves-effect waves-light"
+                            data-bs-toggle="modal"
+                            data-bs-target="#SeoModalScrollable{{ $row->id }}">View</button>
+                          <div class="modal fade" id="SeoModalScrollable{{ $row->id }}" tabindex="-1"
+                            role="dialog" aria-labelledby="SeoModalScrollableTitle{{ $row->id }}"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-scrollable">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h5 class="modal-title" id="SeoModalScrollableTitle{{ $row->id }}">
+                                    SEO
+                                  </h5>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                  {!! $row->top_description !!}
+                                  <hr>
+                                  {!! $row->bottom_description !!}
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="button" class="btn btn-light" data-bs-dismiss="modal">Close</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        @else
+                          Null
+                        @endif
                       </td>
                       <td>
                         @if ($row->meta_title != null)
@@ -399,6 +442,7 @@
       }
     }
 
-    CKEDITOR.replace("description");
+    CKEDITOR.replace("top_description");
+    CKEDITOR.replace("bottom_description");
   </script>
 @endsection
