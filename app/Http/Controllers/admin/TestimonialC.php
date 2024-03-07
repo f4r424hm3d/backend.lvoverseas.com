@@ -30,7 +30,7 @@ class TestimonialC extends Controller
     }
     $page_title = "Testimonials";
     $page_route = "testimonials";
-    $data = compact('rows', 'sd', 'ft', 'url', 'title', 'page_title', 'page_route','countries');
+    $data = compact('rows', 'sd', 'ft', 'url', 'title', 'page_title', 'page_route', 'countries');
     return view('admin.testimonials')->with($data);
   }
   public function store(Request $request)
@@ -42,7 +42,6 @@ class TestimonialC extends Controller
         'name' => 'required',
         'thumbnail' => 'nullable|max:5000|mimes:jpg,jpeg,png,gif',
         'review' => 'required',
-        'country' => 'required',
       ]
     );
     $field = new Testimonial;
@@ -78,7 +77,6 @@ class TestimonialC extends Controller
         'name' => 'required',
         'thumbnail' => 'nullable|max:5000|mimes:jpg,jpeg,png,gif',
         'review' => 'required',
-        'country' => 'required',
       ]
     );
     $field = Testimonial::find($id);

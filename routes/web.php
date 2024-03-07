@@ -24,6 +24,7 @@ use App\Http\Controllers\admin\DynamicPageSeoC;
 use App\Http\Controllers\admin\GalleryC;
 use App\Http\Controllers\admin\InstituteTypeC;
 use App\Http\Controllers\admin\ServiceC;
+use App\Http\Controllers\admin\TestimonialC;
 use App\Http\Controllers\admin\UploadFilesC;
 use App\Models\Blog;
 use App\Models\Service;
@@ -300,6 +301,13 @@ Route::middleware(['adminLoggedIn'])->group(function () {
       Route::get('/delete/{id}/', [UniversityVideoGalleryC::class, 'delete']);
       Route::get('/{university_id}/update/{id}/', [UniversityVideoGalleryC::class, 'index']);
       Route::post('/{university_id}/update/{id}/', [UniversityVideoGalleryC::class, 'update']);
+    });
+    Route::prefix('/testimonials')->group(function () {
+      Route::get('/', [TestimonialC::class, 'index']);
+      Route::post('/store/', [TestimonialC::class, 'store']);
+      Route::get('/delete/{id}/', [TestimonialC::class, 'delete']);
+      Route::get('/update/{id}/', [TestimonialC::class, 'index']);
+      Route::post('/update/{id}/', [TestimonialC::class, 'update']);
     });
   });
 });
