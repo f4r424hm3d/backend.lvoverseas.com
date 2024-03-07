@@ -16,7 +16,7 @@ class BlogAc extends Controller
   }
   public function latestBlogs(Request $request, $no = 10)
   {
-    $blogs = Blog::with('getCategory')->orderBy('id', 'desc')->limit($no)->get();
+    $blogs = Blog::with('getCategory', 'getUser')->orderBy('id', 'desc')->limit($no)->get();
 
     return response()->json($blogs);
   }
