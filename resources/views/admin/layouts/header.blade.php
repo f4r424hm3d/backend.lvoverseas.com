@@ -255,10 +255,10 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="topnav-more">
                   <div class="dropdown">
-                    <a class="dropdown-item dropdown-toggle arrow-none" href="{{ aurl('seos') }}" id="topnav-auth"
+                    {{-- <a class="dropdown-item dropdown-toggle arrow-none" href="{{ aurl('seos') }}" id="topnav-auth"
                       role="button">
                       <span data-key="t-authentication">SEO</span>
-                    </a>
+                    </a> --}}
                     <a class="dropdown-item dropdown-toggle arrow-none" href="{{ aurl('dynamic-page-seos') }}"
                       id="topnav-auth" role="button">
                       <span data-key="t-authentication">Dynamic Page Seo</span>
