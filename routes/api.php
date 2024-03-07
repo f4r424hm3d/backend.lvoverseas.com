@@ -3,6 +3,7 @@
 use App\Http\Controllers\api\BlogAc;
 use App\Http\Controllers\api\DestinationAc;
 use App\Http\Controllers\api\GalleryAc;
+use App\Http\Controllers\api\SeoAc;
 use App\Http\Controllers\api\ServiceAc;
 use App\Http\Controllers\api\TestimonialAc;
 use App\Http\Controllers\api\UniversityAc;
@@ -48,3 +49,5 @@ Route::get('/university-videos/{university_id}', [UniversityAc::class, 'videos']
 Route::get('/universities-by-destination/{destination_id}', [UniversityAc::class, 'universityBydestination']);
 
 Route::get('/testimonials', [TestimonialAc::class, 'index']);
+
+Route::get('/seo/{page_name}', [SeoAc::class, 'index']);
