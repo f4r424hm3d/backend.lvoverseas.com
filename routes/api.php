@@ -5,6 +5,7 @@ use App\Http\Controllers\api\DestinationAc;
 use App\Http\Controllers\api\GalleryAc;
 use App\Http\Controllers\api\SeoAc;
 use App\Http\Controllers\api\ServiceAc;
+use App\Http\Controllers\api\StudentLoginAc;
 use App\Http\Controllers\api\TestimonialAc;
 use App\Http\Controllers\api\UniversityAc;
 use Illuminate\Http\Request;
@@ -52,3 +53,40 @@ Route::get('/universities-by-destination/{destination_id}', [UniversityAc::class
 Route::get('/testimonials', [TestimonialAc::class, 'index']);
 
 Route::get('/seo/{page_name}', [SeoAc::class, 'index']);
+
+
+/* STUDENT ROUTES BEFORE LOGIN */
+
+Route::post('/sign-up', [StudentLoginAc::class, 'register']);
+Route::post('/login', [StudentLoginAc::class, 'signin']);
+Route::post('/submit-email-otp', [StudentLoginAc::class, 'submitOtp']);
+Route::post('/forget-password', [StudentLoginAc::class, 'forgetPassword']);
+Route::post('/reset-password', [StudentLoginAc::class, 'resetPassword']);
+
+/* STUDENT ROUTES AFTER LOGIN */
+
+Route::prefix('/student')->group(function () {
+  Route::get('/delete-school/{id}', [StudentFc::class, 'deleteSchool']);
+  Route::prefix('profile')->group(function () {
+    Route::get('', [StudentFc::class, 'profile']);
+    Route::post('/update', [StudentFc::class, 'updateProfile']);
+  });
+  Route::get('/change-password', [StudentFc::class, 'viewChangePassword']);
+  Route::post('/change-password', [StudentFc::class, 'changePassword']);
+  Route::get('/applied-college', [StudentFc::class, 'appliedCollege']);
+  Route::get('/shortlist', [StudentFc::class, 'shortlist']);
+  Route::get('/account-settings', [StudentFc::class, 'settings']);
+  Route::post('/personal-information', [StudentFc::class, 'submitPersonalInfo']);
+  Route::post('/education-summary', [StudentFc::class, 'submitEduSum']);
+  Route::post('/add-school', [StudentFc::class, 'addSchool']);
+  Route::post('/update-school', [StudentFc::class, 'updateSchool']);
+  Route::post('/update-test-score', [StudentFc::class, 'updateTestScore']);
+  Route::post('/update-gre-score', [StudentFc::class, 'updateGRE']);
+  Route::post('/update-gmat-score', [StudentFc::class, 'updateGMAT']);
+  Route::post('/update-sat-score', [StudentFc::class, 'updateSAT']);
+  Route::post('/update-background-info', [StudentFc::class, 'updateBI']);
+  Route::post('/upload-documents', [StudentFc::class, 'updateDocs']);
+  Route::get('/apply-program', [ApplyProgramFc::class, 'applyProgram']);
+  Route::get('/shortlist-program', [ApplyProgramFc::class, 'shortlistProgram']);
+  Route::get('/delete-program/{id}', [StudentFc::class, 'deleteProgram']);
+});
