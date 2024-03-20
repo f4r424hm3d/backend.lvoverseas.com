@@ -7,5 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Student extends Model
 {
-    use HasFactory;
+  use HasFactory;
+  protected $guarded = [];
+  public function schools()
+  {
+    return $this->hasMany(SchoolAttended::class, 'student_id', 'id');
+  }
 }

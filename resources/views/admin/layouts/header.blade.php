@@ -305,17 +305,29 @@
                 </div>
               </li>
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle arrow-none" href="{{ aurl('upload-files') }}"
-                  id="topnav-dashboard" role="button" title="Dashboard">
-                  <i data-feather="file-text"></i> Upload Files
+                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
+                  <i data-feather="file-text"></i>
+                  <span data-key="t-extra-pages">More</span>
+                  <div class="arrow-down"></div>
                 </a>
+                <div class="dropdown-menu" aria-labelledby="topnav-more">
+                  <div class="dropdown">
+                    <a class="dropdown-item dropdown-toggle arrow-none" href="{{ aurl('upload-files') }}"
+                      id="topnav-auth" role="button">
+                      <span data-key="t-authentication">Upload Files</span>
+                    </a>
+                    <a class="dropdown-item dropdown-toggle arrow-none" href="{{ aurl('testimonials') }}"
+                      id="topnav-auth" role="button">
+                      <span data-key="t-authentication">Testimonials</span>
+                    </a>
+                    <a class="dropdown-item dropdown-toggle arrow-none" href="{{ aurl('levels') }}" id="topnav-auth"
+                      role="button">
+                      <span data-key="t-authentication">Levels</span>
+                    </a>
+                  </div>
+                </div>
               </li>
-              <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle arrow-none" href="{{ aurl('testimonials') }}"
-                  id="topnav-dashboard" role="button" title="Dashboard">
-                  Testimonials
-                </a>
-              </li>
+
             </ul>
           </div>
         </nav>

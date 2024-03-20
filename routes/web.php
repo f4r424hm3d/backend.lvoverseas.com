@@ -23,6 +23,7 @@ use App\Http\Controllers\admin\BlogCategoryC;
 use App\Http\Controllers\admin\DynamicPageSeoC;
 use App\Http\Controllers\admin\GalleryC;
 use App\Http\Controllers\admin\InstituteTypeC;
+use App\Http\Controllers\admin\LevelC;
 use App\Http\Controllers\admin\ServiceC;
 use App\Http\Controllers\admin\TestimonialC;
 use App\Http\Controllers\admin\UploadFilesC;
@@ -135,6 +136,15 @@ Route::middleware(['adminLoggedIn'])->group(function () {
     Route::get('/dashboard/', [AdminDashboard::class, 'index']);
     Route::get('/profile/', [AdminDashboard::class, 'profile']);
     Route::post('/update-profile/', [AdminDashboard::class, 'updateProfile']);
+
+    Route::prefix('/levels')->group(function () {
+      Route::get('', [LevelC::class, 'index']);
+      Route::post('/store', [LevelC::class, 'store']);
+      Route::get('/delete/{id}', [LevelC::class, 'delete']);
+      Route::get('/update/{id}', [LevelC::class, 'index']);
+      Route::post('/update/{id}', [LevelC::class, 'update']);
+      Route::post('/import', [LevelC::class, 'import']);
+    });
 
     Route::prefix('/destinations')->group(function () {
       Route::get('', [DestinationC::class, 'index']);
