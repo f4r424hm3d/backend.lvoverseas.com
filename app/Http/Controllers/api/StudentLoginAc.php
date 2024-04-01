@@ -75,7 +75,7 @@ class StudentLoginAc extends Controller
         $result->otp_expire_at = $otp_expire_at;
         $result->save();
         $msg = 'OTP expired. New OTP has been send to your email id.';
-        return response()->json(['message' => $msg, 'id' => $result->id]);
+        return response()->json(['message' => $msg, 'id' => $result->id, 'status' => 'failed']);
       } else {
         $result->otp = null;
         $result->otp_expire_at = null;
@@ -86,11 +86,11 @@ class StudentLoginAc extends Controller
         $result->source = 'signup';
         $result->save();
         $msg = 'Email verified. Succesfully logged in.';
-        return response()->json(['message' => $msg, 'id' => $result->id]);
+        return response()->json(['message' => $msg, 'id' => $result->id, 'status' => 'success']);
       }
     } else {
       $msg = 'Enter incorrect OTP';
-      return response()->json(['message' => $msg, 'id' => $result->id]);
+      return response()->json(['message' => $msg, 'id' => $result->id, 'status' => 'failed']);
     }
   }
 
