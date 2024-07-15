@@ -170,7 +170,7 @@ class StudentAc extends Controller
   }
   public function addSchool(Request $request)
   {
-    $id = $request->id;
+    $id = $request->student_id;
     // printArray($request->toArray());
     // die;
 

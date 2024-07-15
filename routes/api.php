@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\LevelC;
+use App\Http\Controllers\api\ApplyCollegeAc;
 use App\Http\Controllers\api\BlogAc;
 use App\Http\Controllers\api\DestinationAc;
 use App\Http\Controllers\api\GalleryAc;
@@ -84,4 +85,7 @@ Route::prefix('/student')->group(function () {
   Route::post('/update-test-score', [StudentAc::class, 'updateTestScore']);
   Route::post('/update-background-info', [StudentAc::class, 'updateBI']);
   Route::post('/upload-documents', [StudentAc::class, 'updateDocs']);
+
+  Route::get('/apply-college/{university_id}/{student_id}', [ApplyCollegeAc::class, 'index']);
+  Route::get('/applied-colleges/{student_id}', [ApplyCollegeAc::class, 'colleges']);
 });

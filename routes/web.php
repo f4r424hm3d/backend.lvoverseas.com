@@ -27,6 +27,7 @@ use App\Http\Controllers\admin\LevelC;
 use App\Http\Controllers\admin\ServiceC;
 use App\Http\Controllers\admin\TestimonialC;
 use App\Http\Controllers\admin\UploadFilesC;
+use App\Http\Controllers\front\HomeFc;
 use App\Models\Blog;
 use App\Models\Service;
 use Illuminate\Support\Facades\Route;
