@@ -41,4 +41,17 @@ class ApplyCollegeAc extends Controller
     }
     return response()->json(['status' => $status, 'message' => $msg]);
   }
+  public function delete($id)
+  {
+    $result = AppliedCollege::find($id);
+    if (!is_null($result)) {
+      $result->delete();
+      $status = 'Success';
+      $msg = 'College has been removed successfully from list.';
+    } else {
+      $status = 'Failed';
+      $msg = 'Something went wrong.';
+    }
+    return response()->json(['status' => $status, 'message' => $msg]);
+  }
 }

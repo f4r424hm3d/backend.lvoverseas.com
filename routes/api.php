@@ -89,4 +89,5 @@ Route::prefix('/student')->group(function () {
   Route::get('/apply-college/{university_id}/{student_id}', [ApplyCollegeAc::class, 'index']);
   Route::get('/applied-colleges/{student_id}', [ApplyCollegeAc::class, 'colleges']);
   Route::get('/check-applied-college/{university_id}/{student_id}', [ApplyCollegeAc::class, 'check']);
+  Route::get('/delete-applied-college/{id}', [ApplyCollegeAc::class, 'delete']);
 });
