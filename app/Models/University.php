@@ -9,6 +9,7 @@ class University extends Model
 {
   use HasFactory;
   protected $guarded = [];
+
   public function getInstType()
   {
     return $this->hasOne(InstituteType::class, 'id', 'institute_type');

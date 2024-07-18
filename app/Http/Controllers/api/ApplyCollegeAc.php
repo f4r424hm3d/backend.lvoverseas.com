@@ -26,7 +26,7 @@ class ApplyCollegeAc extends Controller
   }
   public function colleges($student_id)
   {
-    $schools = AppliedCollege::where('student_id', $student_id)->get();
+    $schools = AppliedCollege::with('college')->where('student_id', $student_id)->get();
     return response()->json($schools);
   }
   public function check(Request $request, $university_id, $student_id)
