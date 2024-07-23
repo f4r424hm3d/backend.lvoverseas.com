@@ -154,7 +154,7 @@ class StudentLoginAc extends Controller
       return response()->json(['message' => $msg]);
     } else {
 
-      $reset_password_link = 'https://lvoverseas.com/password/reset/?uid=' . $field->id . '&token=' . $remember_token;
+      $reset_password_link = 'https://react.lvoverseas.com/password/reset/?uid=' . $field->id . '&token=' . $remember_token;
 
       $emaildata = ['name' => $field->name, 'id' => $field->id, 'remember_token' => $remember_token,  'reset_password_link' => $reset_password_link];
 
@@ -214,6 +214,8 @@ class StudentLoginAc extends Controller
   public function resetPassword(Request $request)
   {
     $validator = FacadesValidator::make($request->all(), [
+      'id' => 'required|numeric',
+      'remember_token' => 'required',
       'new_password' => 'required|min:8',
       'confirm_new_password' => 'required|min:8|same:new_password'
     ]);
@@ -231,10 +233,10 @@ class StudentLoginAc extends Controller
     $current_time = date("YmdHis");
     //printArray($field->all());
     if (is_null($field)) {
-      return response()->json(['message' => 'Invalid Link']);
+      return response()->json(['status' => 'failed', 'message' => 'Invalid Link']);
     } else {
       if ($current_time > $field->otp_expire_at) {
-        return response()->json(['message' => 'Invalid Link']);
+        return response()->json(['status' => 'failed', 'message' => 'Invalid Link']);
       } else {
         $lc = $field->login_count == '' ? 0 : $field->login_count + 1;
         $field->login_count = $lc;
@@ -244,7 +246,7 @@ class StudentLoginAc extends Controller
         $field->password = $request['new_password'];
         $field->save();
         $msg = 'Password change succesfully. Succesfully logged in';
-        return response()->json(['message' => $msg, 'student_id' => $field->id]);
+        return response()->json(['status' => 'success', 'message' => $msg, 'student_id' => $field->id]);
       }
     }
   }
