@@ -5,6 +5,7 @@ namespace App\Http\Controllers\api;
 use App\Http\Controllers\Controller;
 use App\Models\AppliedCollege;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class ApplyCollegeAc extends Controller
 {
@@ -18,6 +19,7 @@ class ApplyCollegeAc extends Controller
       $field = new AppliedCollege();
       $field->student_id = $student_id;
       $field->university_id = $university_id;
+      $field->token = Str::random(10);
       $field->save();
       $status = 'Success';
       $msg = 'College has been applied successfully.';

@@ -12,4 +12,12 @@ class AppliedCollege extends Model
   {
     return $this->hasOne(University::class, 'id', 'university_id');
   }
+  public function status()
+  {
+    return $this->hasOne(ApplicationStatus::class, 'id', 'application_status_id');
+  }
+  public function notes()
+  {
+    return $this->hasMany(ApplicationNote::class, 'application_id', 'id');
+  }
 }

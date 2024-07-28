@@ -33,13 +33,111 @@
               <div class="row">
                 <div class="col-md-12">
                   <div class="card">
+
+                    <!-- LOGIN INFORMATION START -->
+                    <div>
+                      <div class="card-header">
+                        <h4>
+                          Login Information
+                          <button style="float:right;" onclick="toggleAllFormAttr(this.value,'li')" type="button"
+                            id="litbtn" value="remove" class="btn btn-sm btn-outline-faraz">Edit</button>
+                        </h4>
+                      </div>
+                      <div class="card-body">
+                        <form id="loginInfoForm" method="post">
+                          <input type="hidden" name="id" value="<?php echo $student->id; ?>">
+                          <div class="row">
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="email">Email</label>
+                              <input type="text" class="form-control lif" name="email" placeholder="Email"
+                                value="<?php echo $student->email; ?>" readonly>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="email_verified">Email Varified</label>
+                              <select name="email_verified" class="form-control lif" readonly disabled>
+                                <option value="">Select</option>
+                                <option value="1" <?php echo $student->email_verified == '1' ? 'selected' : ''; ?>>Email Varified</option>
+                                <option value="0" <?php echo $student->email_verified == '0' ? 'selected' : ''; ?>>Email Not Varified</option>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="password">Password</label>
+                              <input type="text" class="form-control lif" name="password" placeholder="Password"
+                                value="<?php echo $student->password; ?>" readonly>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group col-md-12 col-sm-12">
+                              <button style="float:right;" type="submit"
+                                class="btn btn-sm btn-primary liubtn hidden-btn">Update</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <!-- LOGIN INFORMATION END -->
+                    <hr>
+                    <!-- BASIC INFORMATION START -->
+                    <div>
+                      <div class="card-header">
+                        <h4>
+                          Basic Information
+                          <button style="float:right;" onclick="toggleFormAttr(this.value)" type="button" id="pitbtn"
+                            value="remove" class="btn btn-sm btn-outline-faraz">Edit</button>
+                        </h4>
+                      </div>
+                      <div class="card-body">
+                        <form id="basicInfoForm" method="post">
+                          <input type="hidden" name="id" value="<?php echo $student->id; ?>">
+                          <div class="row">
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="intrested_subject">Intrested Subject/Course</label>
+                              <input type="text" class="form-control pif" name="intrested_subject"
+                                id="intrested_subject" placeholder="Intrested Subject/Course" value="<?php echo $student->intrested_subject; ?>"
+                                readonly>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="intrested_university">Intrested University</label>
+                              <input type="text" class="form-control pif" name="intrested_university"
+                                id="intrested_university" placeholder="Intrested University" value="<?php echo $student->intrested_university; ?>"
+                                readonly>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="highest_qualification">Highest Qualification</label>
+                              <input type="text" class="form-control pif" name="highest_qualification"
+                                id="highest_qualification" placeholder="Highest Qualification"
+                                value="<?php echo $student->highest_qualification; ?>" readonly>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="exam_taken">Exam Taken</label>
+                              <input type="text" class="form-control pif" name="exam_taken" id="exam_taken"
+                                placeholder="Exam Taken" value="<?php echo $student->exam_taken; ?>" readonly>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="preferred_destination">Preffered Destination</label>
+                              <input type="text" class="form-control pif" name="preferred_destination"
+                                id="preferred_destination" placeholder="Preffered Destination"
+                                value="<?php echo $student->preferred_destination; ?>" readonly>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="form-group col-md-12 col-sm-12">
+                              <button style="float:right;" type="submit"
+                                class="btn btn-sm btn-primary piubtn hidden-btn">Update</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                    <!-- BASIC INFORMATION END -->
+                    <hr>
                     <!-- GENRAL INFORMATION START -->
                     <div>
                       <div class="card-header">
                         <h4>
                           Personal Information
-                          <button style="float:right;" onclick="toggleFormAttr(this.value)" type="button" id="pitbtn"
-                            value="remove" class="btn btn-sm btn-outline-faraz">Edit</button>
+                          <button style="float:right;" onclick="toggleFormAttr(this.value)" type="button"
+                            id="pitbtn" value="remove" class="btn btn-sm btn-outline-faraz">Edit</button>
                         </h4>
                       </div>
                       <div class="card-body">
@@ -57,18 +155,55 @@
                                 placeholder="Enter email" value="<?php echo $student->email; ?>" readonly>
                             </div>
                             <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="c_code">Country Code</label>
+                              <input min="0" type="number" class="form-control pif" name="c_code"
+                                id="c_code" placeholder="Enter country code" value="<?php echo $student->c_code; ?>" readonly>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
                               <label class="form-label sr-onl" for="mobile">Phone Number</label>
                               <input type="text" class="form-control pif" name="mobile" id="mobile"
                                 placeholder="Enter Phone Number" value="<?php echo $student->mobile; ?>" readonly>
                             </div>
-
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="father">Father Name</label>
+                              <input type="text" class="form-control pif" name="father" id="father"
+                                placeholder="Enter Father Name" value="<?php echo $student->father; ?>" readonly>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="father_mobile">Father Mobile</label>
+                              <input type="text" class="form-control pif" name="father_mobile" id="father_mobile"
+                                placeholder="Enter Father Mobile" value="<?php echo $student->father_mobile; ?>" readonly>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="mother">Mother Name</label>
+                              <input type="text" class="form-control pif" name="mother" id="mother"
+                                placeholder="Enter mother Name" value="<?php echo $student->mother; ?>" readonly>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="mother_mobile">Mother Mobile</label>
+                              <input type="text" class="form-control pif" name="mother_mobile" id="mother_mobile"
+                                placeholder="Enter Mother Mobile" value="<?php echo $student->mother_mobile; ?>" readonly>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="nationality">Country of Citizenship</label>
+                              <select name="nationality" id="nationality" class="form-control pif select2" readonly
+                                disabled="">
+                                <option value="" <?php echo $student->nationality == '' ? 'Selected' : ''; ?>>Select</option>
+                                <?php
+                                $countrys = $this->mm->getDataByOW('name', 'ASC', ['id !=' => '0'], 'countries');
+                                foreach ($countrys as $c) {
+                                ?>
+                                <option value="<?php echo $c->name; ?>" <?php echo $student->nationality == $c->name ? 'Selected' : ''; ?>><?php echo $c->name; ?></option>
+                                <?php } ?>
+                              </select>
+                            </div>
                             <div class="form-group col-md-3 col-sm-12">
                               <label class="form-label sr-onl" for="gender">Gender</label>
                               <select id="gender" name="gender" class="form-control pif select2" readonly
                                 disabled="">
                                 <option value="" <?php echo $student->gender == '' ? 'Selected' : ''; ?>>Select</option>
-                                <option value="Male" <?php echo $student->gender == 'Male' ? 'Selected' : ''; ?>>Male</option>
-                                <option value="Female" <?php echo $student->gender == 'Female' ? 'Selected' : ''; ?>>Female</option>
+                                <option value="male" <?php echo $student->gender == 'male' ? 'Selected' : ''; ?>>Male</option>
+                                <option value="female" <?php echo $student->gender == 'female' ? 'Selected' : ''; ?>>Female</option>
                                 <option value="other" <?php echo $student->gender == 'other' ? 'Selected' : ''; ?>>Other</option>
                               </select>
                             </div>
@@ -77,11 +212,15 @@
                               <input type="date" class="form-control pif" name="dob" id="dob"
                                 placeholder="Enter date of birth" value="<?php echo $student->dob; ?>" readonly>
                             </div>
-
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="first_language">First Language</label>
+                              <input type="text" class="form-control pif" name="first_language" id="first_language"
+                                placeholder="Enter First Language" value="<?php echo $student->first_language; ?>" readonly>
+                            </div>
                             <div class="form-group col-md-3 col-sm-12">
                               <label class="form-label sr-onl" for="marital_status">Marital Status</label>
-                              <select name="marital_status" id="marital_status" class="form-control pif select2" readonly
-                                disabled="">
+                              <select name="marital_status" id="marital_status" class="form-control pif select2"
+                                readonly disabled="">
                                 <option value="" <?php echo $student->marital_status == '' ? 'Selected' : ''; ?>>Select</option>
                                 <option value="Single" <?php echo $student->marital_status == 'Single' ? 'Selected' : ''; ?>>Single
                                 </option>
@@ -89,100 +228,69 @@
                                 </option>
                               </select>
                             </div>
-
                             <div class="form-group col-md-3 col-sm-12">
-                              <label class="form-label sr-onl pif" for="branch_id">Branch</label>
-                              <select name="branch_id" id="branch_id" class="form-control pif select2" required disabled>
-                                <option value="">Select</option>
-                                <?php
-                                $branches = $this->mm->getDataByOW('id', 'ASC', ['id !=' => '0'], 'branches');
-                                foreach ($branches as $row) {
-                                ?>
-                                <option value="<?php echo $row->id; ?>" <?php echo $student->branch_id == $row->id ? 'Selected' : ''; ?>><?php echo $row->branch_name; ?></option>
-                                <?php } ?>
-                              </select>
-                            </div>
-
-                            <div class="form-group col-md-3 col-sm-12">
-                              <label class="form-label sr-onl" for="designation">Designation</label>
-                              <input type="text" class="form-control pif" name="designation" id="designation"
-                                placeholder="Enter Designation" value="<?php echo $student->designation; ?>" readonly>
-                            </div>
-
-                            <div class="form-group col-md-3 col-sm-12">
-                              <label class="form-label sr-onl" for="kids">Kids</label>
-                              <input type="number" class="form-control pif" name="kids" id="kids"
-                                placeholder="Enter Kids" value="<?php echo $student->kids; ?>" readonly>
-                            </div>
-
-                            <div class="form-group col-md-3 col-sm-12">
-                              <label class="form-label sr-onl" for="joining_date">Joining Date</label>
-                              <input type="date" class="form-control pif" name="joining_date" id="joining_date"
-                                placeholder="Enter Joining Date" value="<?php echo $student->joining_date; ?>" readonly>
-                            </div>
-
-                            <div class="form-group col-md-3 col-sm-12">
-                              <label class="form-label sr-onl" for="salary">Salary</label>
-                              <input type="number" class="form-control pif" name="salary" id="salary"
-                                placeholder="Enter Salary" value="<?php echo $student->salary; ?>" readonly>
+                              <label class="form-label sr-onl" for="passport_number">Passport Number</label>
+                              <input type="text" class="form-control pif" name="passport_number"
+                                id="passport_number" placeholder="Enter Passport Number" value="<?php echo $student->passport_number; ?>"
+                                readonly>
                             </div>
                             <div class="form-group col-md-3 col-sm-12">
-                              <label class="form-label sr-onl" for="revised_salary">Revised Salary</label>
-                              <input type="number" class="form-control pif" name="revised_salary" id="revised_salary"
-                                placeholder="Enter Revised Salary" value="<?php echo $student->revised_salary; ?>" readonly>
+                              <label class="form-label sr-onl" for="passport_expiry">Passport Expiry</label>
+                              <input type="date" class="form-control pif" name="passport_expiry"
+                                id="passport_expiry" placeholder="Enter Passport Expiry date"
+                                value="<?php echo $student->passport_expiry; ?>" readonly>
                             </div>
                             <div class="form-group col-md-3 col-sm-12">
-                              <label class="form-label sr-onl" for="incentive">Incentive</label>
-                              <input type="number" class="form-control pif" name="incentive" id="incentive"
-                                placeholder="Enter Incentive" value="<?php echo $student->incentive; ?>" readonly>
-                            </div>
-                            <div class="form-group col-md-3 col-sm-12">
-                              <label class="form-label sr-onl" for="parents_occupation">Parents Occupation</label>
-                              <input type="text" class="form-control pif" name="parents_occupation"
-                                id="parents_occupation" placeholder="Enter Parents Occupation"
-                                value="<?php echo $student->parents_occupation; ?>" readonly>
+                              <label class="form-label sr-onl" for="religion">Religion</label>
+                              <input type="text" class="form-control pif" name="religion" id="religion"
+                                placeholder="Enter religion" value="<?php echo $student->religion; ?>" readonly>
                             </div>
                           </div>
                           <hr>
                           <h4>Address Detail</h4>
                           <hr>
                           <div class="row">
-                            <div class="form-group col-md-2 col-sm-12">
-                              <label class="form-label sr-onl" for="house_no">House/Building No</label>
-                              <input type="text" class="form-control pif" name="house_no" id="house_no"
-                                placeholder="Enter address" value="<?php echo $student->house_no; ?>" readonly>
-                            </div>
                             <div class="form-group col-md-6 col-sm-12">
-                              <label class="form-label sr-onl" for="address">Address</label>
-                              <input type="text" class="form-control pif" name="address" id="address"
-                                placeholder="Enter address" value="<?php echo $student->address; ?>" readonly>
-                            </div>
-                            <div class="form-group col-md-4 col-sm-12">
-                              <label class="form-label sr-onl" for="landmark">Landmak</label>
-                              <input type="text" class="form-control pif" name="landmark" id="landmark"
-                                placeholder="Enter Landmak" value="<?php echo $student->landmark; ?>" readonly>
+                              <label class="form-label sr-onl" for="home_address">Address</label>
+                              <input type="text" class="form-control pif" name="home_address" id="home_address"
+                                placeholder="Enter address" value="<?php echo $student->home_address; ?>" readonly>
                             </div>
                             <div class="form-group col-md-3 col-sm-12">
                               <label class="form-label sr-onl" for="city">City</label>
                               <input type="text" class="form-control pif" name="city" id="city"
-                                placeholder="Enter City" value="<?php echo $student->city; ?>" readonly>
+                                placeholder="Enter city" value="<?php echo $student->city; ?>" readonly>
                             </div>
                             <div class="form-group col-md-3 col-sm-12">
-                              <label class="form-label sr-onl" for="state">State</label>
-                              <input type="text" class="form-control pif" name="state" id="state"
-                                placeholder="Enter state" value="<?php echo $student->state; ?>" readonly>
-                            </div>
-                            <div class="form-group col-md-3 col-sm-12">
-                              <label class="form-label sr-onl" for="country">Country</label>
-                              <select name="country" id="country" class="form-control pif select2" readonly
+                              <label class="form-label sr-onl" for="state">State/Province</label>
+                              <select name="state" id="state" class="form-control select2 pif" readonly
                                 disabled="">
-                                <option value="" <?php echo $student->country == '' ? 'Selected' : ''; ?>>Select</option>
+                                <option value="" <?php echo $student->state == '' ? 'Selected' : ''; ?>>Select</option>
+                                <?php
+                                $state = $this->mm->getAllData('tbl_state');
+                                foreach ($state as $row) {
+                                ?>
+                                <option value="<?php echo $row->statename; ?>" <?php echo $student->state == $row->statename ? 'Selected' : ''; ?>><?php echo $row->statename; ?>
+                                </option>
+                                <?php } ?>
                               </select>
                             </div>
                             <div class="form-group col-md-3 col-sm-12">
-                              <label class="form-label sr-onl" for="pincode">Postal/Zipcode</label>
-                              <input type="text" class="form-control pif" name="pincode" id="pincode"
-                                placeholder="Enter Postal/Zipcode" value="<?php echo $student->pincode; ?>" readonly>
+                              <label class="form-label sr-onl" for="country">Country <?php echo $student->country; ?></label>
+                              <select name="country" id="country" class="form-control pif select2" readonly
+                                disabled="">
+                                <option value="" <?php echo $student->country == '' ? 'Selected' : ''; ?>>Select</option>
+                                <?php
+                                $countrys = $this->mm->getDataByOW('name', 'ASC', ['id !=' => '0'], 'countries');
+                                foreach ($countrys as $c) {
+                                ?>
+                                <option value="<?php echo $c->name; ?>" <?php echo $student->country == $c->name ? 'Selected' : ''; ?>><?php echo $c->name; ?></option>
+                                <?php } ?>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="zipcode">Postal/Zipcode</label>
+                              <input type="text" class="form-control pif" name="zipcode" id="zipcode"
+                                placeholder="Enter Postal/Zipcode" value="<?php echo $student->zipcode; ?>" readonly>
                             </div>
                             <div class="form-group col-md-3 col-sm-12">
                               <label class="form-label sr-onl" for="home_contact_number">Home Contact Number</label>
@@ -191,7 +299,59 @@
                                 value="<?php echo $student->home_contact_number; ?>" readonly>
                             </div>
                           </div>
-
+                          <hr>
+                          <h4>Education Summary</h4>
+                          <hr>
+                          <div class="row">
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="country_of_education">Country of Education</label>
+                              <select name="country_of_education" id="country_of_education"
+                                class="form-control pif select2" readonly disabled="">
+                                <option value="" <?php echo $student->country_of_education == '' ? 'Selected' : ''; ?>>Select</option>
+                                <?php
+                                $countrys = $this->mm->getDataByOW('name', 'ASC', ['id !=' => '0'], 'countries');
+                                foreach ($countrys as $c) {
+                                ?>
+                                <option value="<?php echo $c->name; ?>" <?php echo $student->country_of_education == $c->name ? 'Selected' : ''; ?>><?php echo $c->name; ?>
+                                </option>
+                                <?php } ?>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="highest_level_of_education">Highest Level of
+                                Education</label>
+                              <select name="highest_level_of_education" id="highest_level_of_education"
+                                class="form-control pif select2" readonly disabled="">
+                                <option value="" <?php echo $student->highest_level_of_education == '' ? 'Selected' : ''; ?>>Select
+                                </option>
+                                <?php
+                                $loe = $this->mm->getDataByOW('id', 'ASC', ['id !=' => '0'], 'tbl_level_of_education');
+                                foreach ($loe as $c) {
+                                ?>
+                                <option value="<?php echo $c->level; ?>" <?php echo $student->highest_level_of_education == $c->level ? 'Selected' : ''; ?>>
+                                  <?php echo $c->level; ?></option>
+                                <?php } ?>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="grading_scheme">Grading Scheme</label>
+                              <select name="grading_scheme" id="grading_scheme" class="form-control pif select2"
+                                readonly disabled="">
+                                <option value="" <?php echo $student->grading_scheme == '' ? 'Selected' : ''; ?>>Select</option>
+                                <option value="Percentage scale (0-100)" <?php echo $student->grading_scheme == 'Percentage scale (0-100)' ? 'Selected' : ''; ?>>Percentage
+                                  scale (0-100)</option>
+                                <option value="Grade Points (10 scale)" <?php echo $student->grading_scheme == 'Grade Points (10 scale)' ? 'Selected' : ''; ?>>Grade Points
+                                  (10 scale)</option>
+                                <option value="Grade (A to E)" <?php echo $student->grading_scheme == 'Grade (A to E)' ? 'Selected' : ''; ?>>Grade (A to E)
+                                </option>
+                              </select>
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="grade_average">Grade Average</label>
+                              <input type="text" class="form-control pif" name="grade_average" id="grade_average"
+                                placeholder="Enter Grade Average" value="<?php echo $student->grade_average; ?>" readonly>
+                            </div>
+                          </div>
                           <div class="row">
                             <div class="form-group col-md-12 col-sm-12">
                               <button style="float:right;" type="submit"
@@ -199,34 +359,60 @@
                             </div>
                           </div>
                         </form>
-
-                        <form id="bankDetailForm" method="post">
+                        <form id="testscoreform" method="post">
                           <input type="hidden" name="id" value="<?php echo $student->id; ?>">
                           <hr>
-                          <h4>Bank Details</h4>
+                          <h4>Test Scores</h4>
                           <hr>
                           <div class="row">
-                            <div class="form-group col-md-4 col-sm-12 allfh">
-                              <label class="form-label sr-onl" for="bank_name">Bank Name</label>
-                              <input type="text" class="form-control pif" name="bank_name" id="bank_name"
-                                placeholder="Enter Bank Name" value="<?php echo $student->bank_name; ?>">
+                            <div class="form-group col-md-3 col-sm-12">
+                              <label class="form-label sr-onl" for="english_exam_type">English Exam Type</label>
+                              <select name="english_exam_type" id="english_exam_type" class="form-control pif select2">
+                                <option value="" <?php echo $student->english_exam_type == '' ? 'Selected' : ''; ?>>Select</option>
+                                <?php
+                                $exmtype = ["I dont have this", "I will provide this later", "TOEFL", "IELTS", "Duolingo English Test", "PTE"];
+                                foreach ($exmtype as $exmtyp) {
+                                ?>
+                                <option value="<?php echo $exmtyp; ?>" <?php echo $student->english_exam_type == $exmtyp ? 'Selected' : ''; ?>><?php echo $exmtyp; ?>
+                                </option>
+                                <?php } ?>
+                              </select>
                             </div>
-                            <div class="form-group col-md-8 col-sm-12 allfh">
-                              <label class="form-label sr-onl" for="ac_no">A/C No</label>
-                              <input type="number" class="form-control pif" name="ac_no" id="ac_no"
-                                placeholder="Enter A/C No" value="<?php echo $student->ac_no; ?>">
+                            <div class="form-group col-md-3 col-sm-12 allfh" id="date_of_exam_div">
+                              <label class="form-label sr-onl" for="date_of_exam">Date of Exam</label>
+                              <input type="date" class="form-control pif" name="date_of_exam" id="date_of_exam"
+                                placeholder="Enter Grade Average" value="<?php echo $student->date_of_exam; ?>">
                             </div>
-                            <div class="form-group col-md-4 col-sm-12 allfh">
-                              <label class="form-label sr-onl" for="ifsc_code">IFSC Code</label>
-                              <input type="text" class="form-control pif" name="ifsc_code" id="ifsc_code"
-                                placeholder="Enter IFSC Code" value="<?php echo $student->ifsc_code; ?>">
+                            <div class="form-group col-md-3 col-sm-12 allfh testpartsdiv" id="listening_score_div">
+                              <label class="form-label sr-onl" for="listening_score">Listening</label>
+                              <input type="number" class="form-control pif" name="listening_score"
+                                id="listening_score" placeholder="Enter Exact Score Listening"
+                                value="<?php echo $student->listening_score; ?>" step="any" min="0">
                             </div>
-                            <div class="form-group col-md-4 col-sm-12 allfh">
-                              <label class="form-label sr-onl" for="branch_name">Branch Name</label>
-                              <input type="text" class="form-control pif" name="branch_name" id="branch_name"
-                                placeholder="Enter Branch Name" value="<?php echo $student->branch_name; ?>">
+                            <div class="form-group col-md-3 col-sm-12 allfh testpartsdiv" id="reading_score_div">
+                              <label class="form-label sr-onl" for="reading_score">Reading</label>
+                              <input type="number" class="form-control pif" name="reading_score" id="reading_score"
+                                placeholder="Enter Exact Score Reading" value="<?php echo $student->reading_score; ?>" step="any"
+                                min="0">
                             </div>
-
+                            <div class="form-group col-md-3 col-sm-12 allfh testpartsdiv" id="writing_score_div">
+                              <label class="form-label sr-onl" for="writing_score">Writing</label>
+                              <input type="number" class="form-control pif" name="writing_score" id="writing_score"
+                                placeholder="Enter Exact Score Writing" value="<?php echo $student->writing_score; ?>" step="any"
+                                min="0">
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12 allfh testpartsdiv" id="speaking_score_div">
+                              <label class="form-label sr-onl" for="speaking_score">Speaking</label>
+                              <input type="number" class="form-control pif" name="speaking_score" id="speaking_score"
+                                placeholder="Enter Exact Score Speaking" value="<?php echo $student->speaking_score; ?>" step="any"
+                                min="0">
+                            </div>
+                            <div class="form-group col-md-3 col-sm-12 allfh" id="overall_score_div">
+                              <label class="form-label sr-onl" for="overall_score">Overall Score</label>
+                              <input type="number" class="form-control pif" name="overall_score" id="overall_score"
+                                placeholder="Enter Exact overall score" value="<?php echo $student->overall_score; ?>" step="any"
+                                min="0">
+                            </div>
                           </div>
                           <div class="row">
                             <div class="form-group col-md-12 col-sm-12">
@@ -239,66 +425,157 @@
                     </div>
                     <!-- GENRAL INFORMATION END -->
                     <hr>
-                    <!-- FAMILY BACKGROUND START -->
+                    <!-- SCHOOL ATTENDED START -->
                     <div>
                       <div class="card-header">
                         <h4>
-                          Family Backgraound
+                          School Attended
                           <button style="float:right;" onclick="toggleSChForm()" type="button"
-                            class="btn btn-sm btn-outline-info">Add More <i data-feather="plus"></i></button>
+                            class="btn btn-sm btn-outline-info">Add
+                            More <i data-feather="plus"></i></button>
                         </h4>
                       </div>
                       <div class="card-body">
-                        <div id="familyBakgroundFrom" class="hidden-btn">
-                          <form id="addFBForm" method="post">
-                            <input type="hidden" name="user_id" value="<?php echo $student->id; ?>">
+                        <div id="schoolattendedform" class="hidden-btn">
+                          <form action="<?php echo base_url('Common/addSchool'); ?>" method="post">
+                            <input type="hidden" name="std_id" value="<?php echo $student->id; ?>">
+                            <input type="hidden" name="retpath" value="<?php echo $this->uri->uri_string(); ?>">
                             <div class="row">
                               <div class="form-group col-md-3 col-sm-12">
-                                <label class="form-label sr-onl" for="relation">Relation<span
-                                    class="rqr">*</span></label>
-                                <select name="relation" id="relation" class="form-control select2" required>
+                                <label class="form-label sr-onl" for="country_of_institution">Country of Institution
+                                  <span class="rqr">*</span></label>
+                                <select name="country_of_institution" id="country_of_institution"
+                                  class="form-control select2" required>
                                   <option value="">Select</option>
                                   <?php
-                                  $relations = ['Father', 'Mother', 'Brother', 'Sister', 'Spouse'];
-                                  foreach ($relations as $c) {
+                                  $countrys = $this->mm->getDataByOW('name', 'ASC', ['id !=' => '0'], 'countries');
+                                  foreach ($countrys as $c) {
+                                  ?>
+                                  <option value="<?php echo $c->name; ?>"><?php echo $c->name; ?></option>
+                                  <?php } ?>
+                                </select>
+                              </div>
+                              <div class="form-group col-md-3 col-sm-12">
+                                <label class="form-label sr-onl" for="name_of_institution">Name of Institution <span
+                                    class="rqr">*</span></label>
+                                <input type="text" class="form-control" name="name_of_institution"
+                                  id="name_of_institution" placeholder="Enter Name of Institution" required>
+                              </div>
+                              <div class="form-group col-md-3 col-sm-12">
+                                <label class="form-label sr-onl" for="level_of_education">Level of Education <span
+                                    class="rqr">*</span></label>
+                                <select name="level_of_education" id="level_of_education" class="form-control select2"
+                                  required>
+                                  <option value="">Select</option>
+                                  <?php
+                                  $loe = $this->mm->getDataByOW('id', 'ASC', ['id !=' => '0'], 'tbl_level_of_education');
+                                  foreach ($loe as $c) {
+                                  ?>
+                                  <option value="<?php echo $c->level; ?>"><?php echo $c->level; ?></option>
+                                  <?php } ?>
+                                </select>
+                              </div>
+                              <div class="form-group col-md-3 col-sm-12">
+                                <label class="form-label sr-onl" for="primary_language_of_instruction">Primary Language
+                                  of Instruction
+                                  <span class="rqr">*</span></label>
+                                <input type="text" class="form-control" name="primary_language_of_instruction"
+                                  id="primary_language_of_instruction"
+                                  placeholder="Enter Primary Language of Instruction" required>
+                              </div>
+                              <div class="form-group col-md-3 col-sm-12">
+                                <label class="form-label sr-onl" for="attended_institution_from">Attended Institution
+                                  From <span class="rqr">*</span></label>
+                                <input type="date" class="form-control" name="attended_institution_from"
+                                  id="attended_institution_from" placeholder="Enter Attended Institution From" required>
+                              </div>
+                              <div class="form-group col-md-3 col-sm-12">
+                                <label class="form-label sr-onl" for="attended_institution_to">Attended Institution To
+                                  <span class="rqr">*</span></label>
+                                <input type="date" class="form-control" name="attended_institution_to"
+                                  id="attended_institution_to" placeholder="Enter Attended Institution to" required>
+                              </div>
+                              <div class="form-group col-md-3 col-sm-12">
+                                <label class="form-label sr-onl" for="degree_name">Degree Name</label>
+                                <input type="text" class="form-control" name="degree_name" id="degree_name"
+                                  placeholder="Enter Degree Name">
+                              </div>
+                              <div class="form-group col-md-3 col-sm-12">
+                                <label class="form-label sr-onl" for="study_mode">Study Mode<span
+                                    class="rqr">*</span></label>
+                                <select name="study_mode" id="study_mode" class="form-control select2" required>
+                                  <option value="">Select</option>
+                                  <?php
+                                  $loe = ['Full Time', 'Part Time', 'Online'];
+                                  foreach ($loe as $c) {
                                   ?>
                                   <option value="<?php echo $c; ?>"><?php echo $c; ?></option>
                                   <?php } ?>
                                 </select>
                               </div>
-                              <div class="form-group col-md-3 col-sm-12">
-                                <label class="form-label sr-onl" for="name">Name <span
-                                    class="rqr">*</span></label>
-                                <input type="text" class="form-control" name="name" id="name"
-                                  placeholder="Enter Name" required>
-                              </div>
-                              <div class="form-group col-md-3 col-sm-12">
-                                <label class="form-label sr-onl" for="email">Email</label>
-                                <input type="email" class="form-control" name="email" id="email"
-                                  placeholder="Enter Email">
-                              </div>
-                              <div class="form-group col-md-3 col-sm-12">
-                                <label class="form-label sr-onl" for="mobile">Mobile</label>
-                                <input type="number" class="form-control" name="mobile" id="mobile"
-                                  placeholder="Enter Mobile" required>
-                              </div>
-                              <div class="form-group col-md-6 col-sm-12">
-                                <label class="form-label sr-onl" for="address">Address</label>
-                                <input type="text" class="form-control" name="address" id="address"
-                                  placeholder="Enter Address">
-                              </div>
                             </div>
                             <div class="row">
-                              <div class="form-group col-md-12 col-sm-12">
-                                <button style="float:right;" type="submit" class="btn btn-primary">Save</button>
+                              <div class="form-group col-md-3 col-sm-12">
+                                <label class="form-label">I have graduated from this institution</label>
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="graduated_from_this"
+                                      value="1" checked>Yes</label>
+                                </div>
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input class="form-check-input" type="radio" name="graduated_from_this"
+                                      value="0">No</label>
+                                </div>
+                              </div>
+                              <div class="form-group col-md-3 col-sm-12 grdf">
+                                <label class="form-label sr-onl" for="graduation_date">Graduation Date <span
+                                    class="rqr">*</span></label>
+                                <input type="date" class="form-control" name="graduation_date" id="graduation_date"
+                                  placeholder="Enter Graduation Date" required>
+                              </div>
+                              <div class="form-group col-md-4 col-sm-12 grdf">
+                                <label class="form-label">&nbsp;</label>
+                                <div class="form-check">
+                                  <label class="form-check-label">
+                                    <input class="form-check-input" type="checkbox" name="have_physical_certificate"
+                                      id="have_physical_certificate" value="1"> I have the physical certificate for
+                                    this degree
+                                  </label>
+                                </div>
                               </div>
                             </div>
-                          </form>
-                        </div>
-                        <div id="familyBakgroundEditForm" class="hidden-btn">
-                          <form id="updFBForm" method="post">
-                            <input type="hidden" name="id" id="fbg_id">
-                            <div class="row" id="fbupdinfofield">
+                            <h4>School Address</h4>
+                            <div class="row">
+                              <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label sr-onl" for="address">Address <span
+                                    class="rqr">*</span></label>
+                                <input type="text" class="form-control" name="address" id="address"
+                                  placeholder="Enter address" required>
+                              </div>
+                              <div class="form-group col-md-3 col-sm-12">
+                                <label class="form-label sr-onl" for="scity">City <span
+                                    class="rqr">*</span></label>
+                                <input type="text" class="form-control" name="city" id="scity"
+                                  placeholder="Enter city" required>
+                              </div>
+                              <div class="form-group col-md-3 col-sm-12">
+                                <label class="form-label sr-onl" for="sstate">State/Province</label>
+                                <select name="state" id="sstate" class="form-control select2">
+                                  <option value="">Select</option>
+                                  <?php
+                                  $state = $this->mm->getAllData('tbl_state');
+                                  foreach ($state as $row) {
+                                  ?>
+                                  <option value="<?php echo $row->statename; ?>"><?php echo $row->statename; ?></option>
+                                  <?php } ?>
+                                </select>
+                              </div>
+                              <div class="form-group col-md-3 col-sm-12">
+                                <label class="form-label sr-onl" for="szipcode">Postal/Zipcode</label>
+                                <input type="number" class="form-control" name="zipcode" id="szipcode"
+                                  placeholder="Enter Postal/Zipcode">
+                              </div>
                             </div>
                             <div class="row">
                               <div class="form-group col-md-12 col-sm-12">
@@ -309,504 +586,440 @@
                         </div>
                         <div id="schoolattendedtbl">
                           <?php
-                          $fb = $this->mm->getAllData7(['user_id' => $student->id], 'user_family_backgrounds');
-                          if ($fb != false) {
+                          $schools = $this->mm->getAllData7(['std_id' => $student->id], 'student_schools');
+                          foreach ($schools as $row) {
                           ?>
                           <div class="row" id="schitem<?php echo $row->id; ?>">
-                            <div class="col-md-12">
-                              <table class="table table-sm table-striped">
-                                <thead>
-                                  <tr>
-                                    <th>Relation</th>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th>Address</th>
-                                    <th>Action</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <?php
-                                    $fb = $this->mm->getAllData7(['user_id' => $student->id], 'user_family_backgrounds');
-                                    foreach ($fb as $row) {
-                                    ?>
-                                  <tr id="fb<?php echo $row->id; ?>">
-                                    <td><?php echo $row->relation; ?></td>
-                                    <td><?php echo $row->name; ?></td>
-                                    <td><?php echo $row->email; ?></td>
-                                    <td><?php echo $row->mobile; ?></td>
-                                    <td><?php echo $row->address; ?></td>
-                                    <td>
-                                      <a onclick="deleteFB('<?php echo $row->id; ?>')" href="javascript:void()"
-                                        data-toggle="tooltip" class="btn btn-outline-danger btn-sm" title="Delete"><i
-                                          class="align-middle" data-feather="trash"></i></a>
-
-                                      <a onclick="updFBInfoFunc('<?php echo $row->id; ?>')" href="javascript:void()"
-                                        data-toggle="tooltip" class="btn btn-outline-primary btn-sm" title="Edit"><i
-                                          class="align-middle" data-feather="edit"></i></a>
-                                    </td>
-                                  </tr>
-                                  <?php } ?>
-                                </tbody>
-                              </table>
+                            <div class="col-md-4">
+                              <h3><?php echo $row->name_of_institution; ?></h3>
+                              <h4><?php echo $row->degree_name; ?></h4>
+                            </div>
+                            <div class="col-md-8">
+                              <p style="font-size:15px;">
+                                <?php if ($row->graduated_from_this == 1) { ?>
+                                <i data-feather="check" style="color:green;"></i> <b>Graduated from Institution</b>
+                                <?php echo getFormattedDate($row->graduation_date, 'd M , Y'); ?>
+                                <br>
+                                <?php if ($row->have_physical_certificate == 1) { ?>
+                                <i data-feather="check" style="color:green;"></i> <b>Certificate awarded</b>
+                                <br>
+                                <?php } ?>
+                                <?php } ?>
+                                <b>Level:</b> <?php echo $row->level_of_education; ?>
+                                <br>
+                                <b>Attended from</b> <?php echo getFormattedDate($row->attended_institution_from, 'd M , Y'); ?>
+                                <b>to</b> <?php echo getFormattedDate($row->attended_institution_to, 'd M , Y'); ?>
+                                <br>
+                                <b>Language of instruction:</b> <?php echo $row->primary_language_of_instruction; ?>
+                                <br>
+                                <b>Address:</b>
+                                <?php echo $row->address; ?>, <?php echo $row->city; ?>,
+                                <?php echo $row->state; ?> <?php echo $row->zipcode; ?><br>
+                                <?php echo $row->country_of_institution; ?>
+                              </p>
+                              <span style="float:right;">
+                                <button onclick="dltsch('<?php echo $row->id; ?>')"
+                                  class="btn btn-sm btn-danger">Delete</button>
+                                <button onclick="schItemTgl('<?php echo $row->id; ?>')"
+                                  class="btn btn-sm btn-primary">Edit</button>
+                              </span>
                             </div>
                           </div>
+                          <div class="hidden-btn" id="schitemeditform<?php echo $row->id; ?>">
+                            <form action="<?php echo base_url('Common/updSchool'); ?>" method="post">
+                              <input type="hidden" name="id" value="<?php echo $row->id; ?>">
+                              <input type="hidden" name="retpath" value="<?php echo $this->uri->uri_string(); ?>">
+                              <div class="row">
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl" for="country_of_institution">Country of Institution
+                                    <span class="rqr">*</span></label>
+                                  <select name="country_of_institution" class="form-control select2" required>
+                                    <option value="">Select</option>
+                                    <?php
+                                      $countrys = $this->mm->getDataByOW('name', 'ASC', ['id !=' => '0'], 'countries');
+                                      foreach ($countrys as $c) {
+                                      ?>
+                                    <option value="<?php echo $c->name; ?>" <?php echo $row->country_of_institution == $c->name ? 'Selected' : ''; ?>>
+                                      <?php echo $c->name; ?></option>
+                                    <?php } ?>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl" for="name_of_institution">Name of Institution <span
+                                      class="rqr">*</span></label>
+                                  <input type="text" class="form-control" name="name_of_institution"
+                                    placeholder="Enter Name of Institution" value="<?php echo $row->name_of_institution; ?>" required>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl" for="level_of_education">Level of Education <span
+                                      class="rqr">*</span></label>
+                                  <select name="level_of_education" class="form-control select2" required>
+                                    <option value="">Select</option>
+                                    <?php
+                                      $loe = $this->mm->getDataByOW('id', 'ASC', ['id !=' => '0'], 'tbl_level_of_education');
+                                      foreach ($loe as $c) {
+                                      ?>
+                                    <option value="<?php echo $c->level; ?>" <?php echo $row->level_of_education == $c->level ? 'Selected' : ''; ?>><?php echo $c->level; ?>
+                                    </option>
+                                    <?php } ?>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl" for="primary_language_of_instruction">Primary
+                                    Language of
+                                    Instruction <span class="rqr">*</span></label>
+                                  <input type="text" class="form-control" name="primary_language_of_instruction"
+                                    placeholder="Enter Primary Language of Instruction" value="<?php echo $row->primary_language_of_instruction; ?>"
+                                    required>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl" for="attended_institution_from">Attended Institution
+                                    From <span class="rqr">*</span></label>
+                                  <input type="date" class="form-control" name="attended_institution_from"
+                                    placeholder="Enter Attended Institution From" value="<?php echo $row->attended_institution_from; ?>"
+                                    required>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl" for="attended_institution_to">Attended Institution To
+                                    <span class="rqr">*</span></label>
+                                  <input type="date" class="form-control" name="attended_institution_to"
+                                    placeholder="Enter Attended Institution to" value="<?php echo $row->attended_institution_to; ?>" required>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl" for="degree_name">Degree Name</label>
+                                  <input type="text" class="form-control" name="degree_name"
+                                    value="<?php echo $row->degree_name; ?>" placeholder="Enter Degree Name">
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl" for="study_mode">Study Mode<span
+                                      class="rqr">*</span></label>
+                                  <select name="study_mode" class="form-control select2" required>
+                                    <option value="">Select</option>
+                                    <?php
+                                      $loe = ['Full Time', 'Part Time', 'Online'];
+                                      foreach ($loe as $c) {
+                                      ?>
+                                    <option value="<?php echo $c; ?>" <?php echo $row->study_mode == $c ? 'Selected' : ''; ?>><?php echo $c; ?>
+                                    </option>
+                                    <?php } ?>
+                                  </select>
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label">I have graduated from this institution</label>
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input class="form-check-input" type="radio" name="graduated_from_this"
+                                        value="1" <?php echo $row->graduated_from_this == '1' ? 'checked' : ''; ?>>Yes</label>
+                                  </div>
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input class="form-check-input" type="radio" name="graduated_from_this"
+                                        value="0" <?php echo $row->graduated_from_this == '0' ? 'checked' : ''; ?>>No</label>
+                                  </div>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12 grdf">
+                                  <label class="form-label sr-onl" for="graduation_date">Graduation Date <span
+                                      class="rqr">*</span></label>
+                                  <input type="date" class="form-control" name="graduation_date"
+                                    placeholder="Enter Graduation Date" value="<?php echo $row->graduation_date; ?>" required>
+                                </div>
+                                <div class="form-group col-md-4 col-sm-12 grdf">
+                                  <label class="form-label">&nbsp;</label>
+                                  <div class="form-check">
+                                    <label class="form-check-label">
+                                      <input class="form-check-input" type="checkbox" name="have_physical_certificate"
+                                        value="1" <?php echo $row->have_physical_certificate == '1' ? 'checked' : ''; ?>> I have the physical
+                                      certificate for this degree
+                                    </label>
+                                  </div>
+                                </div>
+                              </div>
+                              <h4>School Address</h4>
+                              <div class="row">
+                                <div class="form-group col-md-6 col-sm-12">
+                                  <label class="form-label sr-onl" for="address">Address <span
+                                      class="rqr">*</span></label>
+                                  <input type="text" class="form-control" name="address"
+                                    placeholder="Enter address" value="<?php echo $row->address; ?>" required>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl" for="scity">City <span
+                                      class="rqr">*</span></label>
+                                  <input type="text" class="form-control" name="city" placeholder="Enter city"
+                                    value="<?php echo $row->city; ?>" required>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl" for="sstate">State/Province</label>
+                                  <select name="state" class="form-control select2">
+                                    <option value="">Select</option>
+                                    <?php
+                                      $state = $this->mm->getAllData('tbl_state');
+                                      foreach ($state as $stt) {
+                                      ?>
+                                    <option value="<?php echo $stt->statename; ?>" <?php echo $row->state == $stt->statename ? 'Selected' : ''; ?>><?php echo $stt->statename; ?>
+                                    </option>
+                                    <?php } ?>
+                                  </select>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl" for="szipcode">Postal/Zipcode</label>
+                                  <input type="number" class="form-control" name="zipcode"
+                                    value="<?php echo $row->zipcode; ?>" placeholder="Enter Postal/Zipcode">
+                                </div>
+                              </div>
+                              <div class="row">
+                                <div class="form-group col-md-12 col-sm-12">
+                                  <div style="float:right;">
+                                    <button onclick="schItemTgl('<?php echo $row->id; ?>')" type="button"
+                                      class="btn btn-sm btn-info">Cancel</button>
+                                    <button type="submit" class="btn btn-sm btn-success">Update</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                          <hr>
                           <?php } ?>
                         </div>
                       </div>
                     </div>
-                    <!-- FAMILY BACKGROUND END -->
-                    <hr>
-                    <!-- PREVIOUS EMPLOYER START -->
+                    <!-- SCHOOL ATTENDED END -->
+
+                    <!-- ADDITIONAL QUALIFICATIONS START -->
                     <div>
                       <div class="card-header">
                         <h4>
-                          Previous Employer
-                          <button style="float:right;" onclick="togglePEForm()" type="button"
-                            class="btn btn-sm btn-outline-info">Add More <i data-feather="plus"></i></button>
+                          Additional Qualifications
                         </h4>
                       </div>
                       <div class="card-body">
-                        <div id="PEForm" class="hidden-btn">
-                          <form id="addPEForm" method="post">
-                            <input type="hidden" name="user_id" value="<?php echo $student->id; ?>">
-                            <div class="row">
-                              <div class="form-group col-md-4 col-sm-12 allfh">
-                                <label class="form-label sr-onl" for="employer_name">Employer Name</label>
-                                <input type="text" class="form-control pif" name="employer_name" id="employer_name"
-                                  placeholder="Enter Employer Name">
-                              </div>
-                              <div class="form-group col-md-4 col-sm-12 allfh">
-                                <label class="form-label sr-onl" for="employer_email">Employer Email</label>
-                                <input type="email" class="form-control pif" name="employer_email"
-                                  id="employer_email" placeholder="Enter Employer Email">
-                              </div>
-                              <div class="form-group col-md-4 col-sm-12 allfh">
-                                <label class="form-label sr-onl" for="employer_mobile">Employer Mobile</label>
-                                <input type="text" class="form-control pif" name="employer_mobile"
-                                  id="employer_mobile" placeholder="Enter Employer Mobile">
-                              </div>
-                              <div class="form-group col-md-4 col-sm-12 allfh">
-                                <label class="form-label sr-onl" for="employer_designation">Designation</label>
-                                <input type="text" class="form-control pif" name="employer_designation"
-                                  id="employer_designation" placeholder="Enter Designation">
-                              </div>
-                              <div class="form-group col-md-4 col-sm-12 allfh">
-                                <label class="form-label sr-onl" for="employer_company_name">Company Name</label>
-                                <input type="text" class="form-control pif" name="employer_company_name"
-                                  id="employer_company_name" placeholder="Enter Company Name">
-                              </div>
-                            </div>
-                            <div class="row">
-                              <div class="form-group col-md-12 col-sm-12">
-                                <button style="float:right;" type="submit" class="btn btn-primary">Save</button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                        <div id="PEEditForm" class="hidden-btn">
-                          <form id="updPEForm" method="post">
-                            <input type="hidden" name="id" id="pe_id">
-                            <div class="row" id="peupdinfofield">
-                            </div>
-                            <div class="row">
-                              <div class="form-group col-md-12 col-sm-12">
-                                <button style="float:right;" type="submit" class="btn btn-primary">Save</button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                        <div id="PETbl">
-                          <?php
-                          $fb = $this->mm->getAllData7(['user_id' => $student->id], 'user_previous_employers');
-                          if ($fb != false) {
-                          ?>
-                          <div class="row" id="schitem<?php echo $row->id; ?>">
-                            <div class="col-md-12">
-                              <table class="table table-sm table-striped">
-                                <thead>
-                                  <tr>
-                                    <th>Name</th>
-                                    <th>Email</th>
-                                    <th>Mobile</th>
-                                    <th>Designation</th>
-                                    <th>Company Name</th>
-                                    <th>Action</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <?php
-                                    $fb = $this->mm->getAllData7(['user_id' => $student->id], 'user_previous_employers');
-                                    foreach ($fb as $row) {
-                                    ?>
-                                  <tr id="pe<?php echo $row->id; ?>">
-                                    <td><?php echo $row->employer_name; ?></td>
-                                    <td><?php echo $row->employer_email; ?></td>
-                                    <td><?php echo $row->employer_mobile; ?></td>
-                                    <td><?php echo $row->employer_designation; ?></td>
-                                    <td><?php echo $row->employer_company_name; ?></td>
-                                    <td>
-                                      <a onclick="deletePE('<?php echo $row->id; ?>')" href="javascript:void()"
-                                        data-toggle="tooltip" class="btn btn-outline-danger btn-sm" title="Delete"><i
-                                          class="align-middle" data-feather="trash"></i></a>
-
-                                      <a onclick="updPEInfoFunc('<?php echo $row->id; ?>')" href="javascript:void()"
-                                        data-toggle="tooltip" class="btn btn-outline-primary btn-sm" title="Edit"><i
-                                          class="align-middle" data-feather="edit"></i></a>
-                                    </td>
-                                  </tr>
-                                  <?php } ?>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <?php } ?>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- PREVIOUS EMPLOYER END -->
-                    <hr>
-                    <!-- PREVIOUS EMPLOYER START -->
-                    <div class="hidden-btn">
-                      <div class="card-header">
-                        <h4>
-                          Previous Employer
-                          <!-- <button style="float:right;" onclick="toggleFormAttr(this.value)" type="button" id="pitbtn" value="remove" class="btn btn-sm btn-outline-faraz">Edit</button> -->
-                        </h4>
-                      </div>
-                      <div class="card-body">
-                        <form id="employerForm" method="post">
-                          <input type="hidden" name="id" value="<?php echo $student->id; ?>">
-                          <div class="row">
-                            <div class="form-group col-md-4 col-sm-12 allfh">
-                              <label class="form-label sr-onl" for="employer_name">Employer Name</label>
-                              <input type="text" class="form-control pif" name="employer_name" id="employer_name"
-                                placeholder="Enter Employer Name" value="<?php echo $student->employer_name; ?>">
-                            </div>
-                            <div class="form-group col-md-4 col-sm-12 allfh">
-                              <label class="form-label sr-onl" for="employer_email">Employer Email</label>
-                              <input type="email" class="form-control pif" name="employer_email" id="employer_email"
-                                placeholder="Enter Employer Email" value="<?php echo $student->employer_email; ?>">
-                            </div>
-                            <div class="form-group col-md-4 col-sm-12 allfh">
-                              <label class="form-label sr-onl" for="employer_mobile">Employer Mobile</label>
-                              <input type="text" class="form-control pif" name="employer_mobile"
-                                id="employer_mobile" placeholder="Enter Employer Mobile" value="<?php echo $student->employer_mobile; ?>">
-                            </div>
-                            <div class="form-group col-md-4 col-sm-12 allfh">
-                              <label class="form-label sr-onl" for="employer_designation">Designation</label>
-                              <input type="text" class="form-control pif" name="employer_designation"
-                                id="employer_designation" placeholder="Enter Designation" value="<?php echo $student->employer_designation; ?>">
-                            </div>
-                            <div class="form-group col-md-4 col-sm-12 allfh">
-                              <label class="form-label sr-onl" for="employer_company_name">Company Name</label>
-                              <input type="text" class="form-control pif" name="employer_company_name"
-                                id="employer_company_name" placeholder="Enter Company Name"
-                                value="<?php echo $student->employer_company_name; ?>">
-                            </div>
-
-                          </div>
-                          <div class="row">
-                            <div class="form-group col-md-12 col-sm-12">
-                              <button style="float:right;" type="submit"
-                                class="btn btn-sm btn-primary tsubtn">Update</button>
-                            </div>
-                          </div>
-                        </form>
-                      </div>
-                    </div>
-                    <!-- PREVIOUS EMPLOYER END -->
-                    <hr>
-                    <!-- DOCUMENTS START -->
-                    <div class="hiddeb-btn">
-                      <div class="card-header">
-                        <h4>
-                          Documents
-                          <button style="float:right;" onclick="toggleDocumentForm()" type="button"
-                            class="btn btn-sm btn-outline-info">Add More <i data-feather="plus"></i></button>
-                        </h4>
-                      </div>
-                      <div class="card-body">
-                        <div id="docForm" class="hidden-btn">
-                          <form action="<?php echo base_url('Common/AddEmpDoc'); ?>" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="user_id" value="<?php echo $student->id; ?>">
+                        <div>
+                          <form action="<?php echo base_url('Common/updGre'); ?>" method="post">
+                            <input type="hidden" name="id" value="<?php echo $student->id; ?>">
                             <input type="hidden" name="retpath" value="<?php echo $this->uri->uri_string(); ?>">
                             <div class="row">
                               <div class="form-group col-md-3 col-sm-12">
-                                <label class="form-label sr-onl" for="document_name">Document Name <span
-                                    class="rqr">*</span></label>
-                                <input type="text" class="form-control" name="document_name" id="document_name"
-                                  placeholder="Enter Document Name" required>
-                              </div>
-                              <div class="form-group col-md-3 col-sm-12">
-                                <label class="form-label sr-onl" for="files">File</label>
-                                <input type="file" class="form-control" name="files" id="files" required>
+                                <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="I have GRE exam scores">
+                                  <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                      <input type="checkbox" name="gre" id="gre" <?php echo $student->gre == '1' ? 'checked' : ''; ?>>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                            <div class="row">
-                              <div class="form-group col-md-12 col-sm-12">
-                                <button style="float:right;" type="submit" class="btn btn-primary">Save</button>
+                            <div class="<?php echo $student->gre == '0' ? 'hidden-btn' : ''; ?>" id="greDiv">
+                              <div class="row">
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl">GRE Exam Date <span class="rqr">*</span></label>
+                                  <input type="date" class="form-control" name="gre_exam_date"
+                                    placeholder="Exam Date" value="<?php echo $student->gre_exam_date; ?>" required>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl">Verbal <span class="rqr">*</span></label>
+                                  <input type="number" class="form-control" name="gre_v_score" placeholder="Score"
+                                    value="<?php echo $student->gre_v_score; ?>" max="170" step="any" min="0"
+                                    required>
+                                  <input type="number" class="form-control" name="gre_v_rank" placeholder="Rank"
+                                    value="<?php echo $student->gre_v_rank; ?>" step="any" max="100" min="0"
+                                    required>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl">Quantitative <span class="rqr">*</span></label>
+                                  <input type="number" class="form-control" name="gre_q_score" placeholder="Score"
+                                    value="<?php echo $student->gre_q_score; ?>" max="170" step="any" min="0"
+                                    required>
+                                  <input type="number" class="form-control" name="gre_q_rank" placeholder="Rank"
+                                    value="<?php echo $student->gre_q_rank; ?>" step="any" max="100" min="0"
+                                    required>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl">Writing <span class="rqr">*</span></label>
+                                  <input type="number" class="form-control" name="gre_w_score" placeholder="Score"
+                                    value="<?php echo $student->gre_w_score; ?>" max="6" step="any" min="0"
+                                    required>
+                                  <input type="number" class="form-control" name="gre_w_rank" placeholder="Rank"
+                                    value="<?php echo $student->gre_w_rank; ?>" step="any" max="100" min="0"
+                                    required>
+                                </div>
+                                <div class="form-group col-md-12 col-sm-12">
+                                  <button style="float:right;" type="submit" class="btn btn-primary">Update</button>
+                                </div>
                               </div>
                             </div>
                           </form>
-                        </div>
-                        <div id="updateDocForm" class="hidden-btn">
-                          <form id="updDocForm" method="post">
-                            <input type="hidden" name="id" id="fbg_id">
-                            <div class="row" id="fbupdinfofield">
-                            </div>
-                            <div class="row">
-                              <div class="form-group col-md-12 col-sm-12">
-                                <button style="float:right;" type="submit" class="btn btn-primary">Save</button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                        <div id="doctbl">
-                          <?php
-                          $docs = $this->mm->getAllData7(['user_id' => $student->id], 'employee_documents');
-                          if ($docs != false) {
-                          ?>
-                          <div class="row" id="schitem<?php echo $row->id; ?>">
-                            <div class="col-md-12">
-                              <table class="table table-s table-striped">
-                                <thead>
-                                  <tr>
-                                    <th>Name</th>
-                                    <th>File</th>
-                                    <th>Action</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <?php
-                                    foreach ($docs as $row) {
-                                    ?>
-                                  <tr id="doc<?php echo $row->id; ?>">
-                                    <td><?php echo $row->document_name; ?></td>
-                                    <td>
-                                      <small>
-                                        <a href="<?php echo $row->file_path; ?>" class="badge badge-info">View</a> | <a
-                                          href="<?php echo $row->file_path; ?>" class="badge badge-primary" download>Download</a>
-                                      </small>
-                                    </td>
-                                    <td>
-                                      <a onclick="deleteDoc('<?php echo $row->id; ?>')" href="javascript:void()"
-                                        data-toggle="tooltip" class="btn btn-outline-danger btn-sm" title="Delete"><i
-                                          class="align-middle" data-feather="trash"></i></a>
-
-                                      <!-- <a onclick="updFBInfoFunc('<?php echo $row->id; ?>')" href="javascript:void()" data-toggle="tooltip" class="btn btn-outline-primary btn-sm" title="Edit"><i class="align-middle" data-feather="edit"></i></a> -->
-                                    </td>
-                                  </tr>
-                                  <?php } ?>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <?php } ?>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- DOCUMENTS END -->
-                    <!-- DOCUMENTS START -->
-                    <div class="hiddeb-btn">
-                      <div class="card-header">
-                        <h4>
-                          Letters
-                          <button style="float:right;" onclick="toggleLetterForm()" type="button"
-                            class="btn btn-sm btn-outline-info">Add More <i data-feather="plus"></i></button>
-                        </h4>
-                      </div>
-                      <div class="card-body">
-                        <div id="ltrForm" class="hidden-btn">
-                          <form action="<?php echo base_url('Common/AddEmpLetter'); ?>" method="post" enctype="multipart/form-data">
-                            <input type="hidden" name="user_id" value="<?php echo $student->id; ?>">
+                          <hr>
+                          <form action="<?php echo base_url('Common/updGmat'); ?>" method="post">
+                            <input type="hidden" name="id" value="<?php echo $student->id; ?>">
                             <input type="hidden" name="retpath" value="<?php echo $this->uri->uri_string(); ?>">
                             <div class="row">
                               <div class="form-group col-md-3 col-sm-12">
-                                <label class="form-label sr-onl" for="document_name">Document Name <span
-                                    class="rqr">*</span></label>
-                                <input type="text" class="form-control" name="document_name" id="document_name"
-                                  placeholder="Enter Document Name" required>
+                                <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="I have GMAT exam scores">
+                                  <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                      <input type="checkbox" name="gmat" id="gmat" <?php echo $student->gmat == '1' ? 'checked' : ''; ?>>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
+                            </div>
+                            <div class="<?php echo $student->gmat == '0' ? 'hidden-btn' : ''; ?>" id="gmatDiv">
+                              <div class="row">
+                                <div class="form-group col-md-2 col-sm-12">
+                                  <label class="form-label sr-onl">GMAT Exam Date <span class="rqr">*</span></label>
+                                  <input type="date" class="form-control" name="gmat_exam_date"
+                                    placeholder="Exam Date" value="<?php echo $student->gmat_exam_date; ?>" required>
+                                </div>
+                                <div class="form-group col-md-2 col-sm-12">
+                                  <label class="form-label sr-onl">Verbal <span class="rqr">*</span></label>
+                                  <input type="number" class="form-control" name="gmat_v_score" placeholder="Score"
+                                    value="<?php echo $student->gmat_v_score; ?>" max="51" min="0" step="any"
+                                    required>
+                                  <input type="number" class="form-control" name="gmat_v_rank" placeholder="Rank"
+                                    value="<?php echo $student->gmat_v_rank; ?>" step="any" max="100" min="0"
+                                    required>
+                                </div>
+                                <div class="form-group col-md-2 col-sm-12">
+                                  <label class="form-label sr-onl">Quantitative <span class="rqr">*</span></label>
+                                  <input type="number" class="form-control" name="gmat_q_score" placeholder="Score"
+                                    value="<?php echo $student->gmat_q_score; ?>" max="51" min="0" step="any"
+                                    required>
+                                  <input type="number" class="form-control" name="gmat_q_rank" placeholder="Rank"
+                                    value="<?php echo $student->gmat_q_rank; ?>" step="any" max="100" min="0"
+                                    required>
+                                </div>
+                                <div class="form-group col-md-2 col-sm-12">
+                                  <label class="form-label sr-onl">Writing <span class="rqr">*</span></label>
+                                  <input type="number" class="form-control" name="gmat_w_score" placeholder="Score"
+                                    value="<?php echo $student->gmat_w_score; ?>" max="6" min="0" step="any"
+                                    required>
+                                  <input type="number" class="form-control" name="gmat_w_rank" placeholder="Rank"
+                                    value="<?php echo $student->gmat_w_rank; ?>" step="any" max="100" min="0"
+                                    required>
+                                </div>
+                                <div class="form-group col-md-2 col-sm-12">
+                                  <label class="form-label sr-onl">Integrated reasoning <span
+                                      class="rqr">*</span></label>
+                                  <input type="number" class="form-control" name="gmat_ir_score" placeholder="Score"
+                                    value="<?php echo $student->gmat_ir_score; ?>" max="8" min="0" step="any">
+                                  <input type="number" class="form-control" name="gmat_ir_rank" placeholder="Rank"
+                                    value="<?php echo $student->gmat_ir_rank; ?>" step="any" max="100" min="0">
+                                </div>
+                                <div class="form-group col-md-2 col-sm-12">
+                                  <label class="form-label sr-onl">Total <span class="rqr">*</span></label>
+                                  <input type="number" class="form-control" name="gmat_total_score"
+                                    placeholder="Score" value="<?php echo $student->gmat_total_score; ?>" min="200"
+                                    max="800" step="any" required>
+                                  <input type="number" class="form-control" name="gmat_total_rank"
+                                    placeholder="Rank" value="<?php echo $student->gmat_total_rank; ?>" step="any" max="100"
+                                    min="0" required>
+                                </div>
+                                <div class="form-group col-md-12 col-sm-12">
+                                  <button style="float:right;" type="submit"
+                                    class="btn btn-primary">Update</button>
+                                </div>
+                              </div>
+                            </div>
+                          </form>
+                          <hr>
+                          <form action="<?php echo base_url('Common/updSat'); ?>" method="post">
+                            <input type="hidden" name="id" value="<?php echo $student->id; ?>">
+                            <input type="hidden" name="retpath" value="<?php echo $this->uri->uri_string(); ?>">
+                            <div class="row">
                               <div class="form-group col-md-3 col-sm-12">
-                                <label class="form-label sr-onl" for="files">File</label>
-                                <input type="file" class="form-control" name="files" id="files" required>
+                                <div class="input-group">
+                                  <input type="text" class="form-control" placeholder="I have SAT exam scores">
+                                  <div class="input-group-prepend">
+                                    <div class="input-group-text">
+                                      <input type="checkbox" name="sat" id="sat" <?php echo $student->sat == '1' ? 'checked' : ''; ?>>
+                                    </div>
+                                  </div>
+                                </div>
                               </div>
                             </div>
-                            <div class="row">
-                              <div class="form-group col-md-12 col-sm-12">
-                                <button style="float:right;" type="submit" class="btn btn-primary">Save</button>
+                            <div class="<?php echo $student->sat == '0' ? 'hidden-btn' : ''; ?>" id="satDiv">
+                              <div class="row">
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl">SAT Exam Date <span class="rqr">*</span></label>
+                                  <input type="date" class="form-control" name="sat_exam_date"
+                                    placeholder="Exam Date" value="<?php echo $student->sat_exam_date; ?>" required>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl">Reasoing Test Points <span
+                                      class="rqr">*</span></label>
+                                  <input type="number" class="form-control" name="sat_reasoning_point"
+                                    placeholder="SAT Reasoning Point" value="<?php echo $student->sat_reasoning_point; ?>" step="any"
+                                    min="0" max="1600" required>
+                                </div>
+                                <div class="form-group col-md-3 col-sm-12">
+                                  <label class="form-label sr-onl">SAT Subject Test Point <span
+                                      class="rqr">*</span></label>
+                                  <input type="number" class="form-control" name="sat_subject_point"
+                                    placeholder="SAT Subject Points" value="<?php echo $student->sat_subject_point; ?>" step="any"
+                                    min="0" max="800" required>
+                                </div>
+                                <div class="form-group col-md-12 col-sm-12">
+                                  <button style="float:right;" type="submit" class="btn btn-primary">Save</button>
+                                </div>
                               </div>
                             </div>
                           </form>
-                        </div>
-                        <div id="updateLetterForm" class="hidden-btn">
-                          <form id="updLetterForm" method="post">
-                            <input type="hidden" name="id" id="fbg_id">
-                            <div class="row" id="fbupdinfofield">
-                            </div>
-                            <div class="row">
-                              <div class="form-group col-md-12 col-sm-12">
-                                <button style="float:right;" type="submit" class="btn btn-primary">Save</button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                        <div id="lettertbl">
-                          <?php
-                          $docs = $this->mm->getAllData7(['user_id' => $student->id], 'employee_letters');
-                          if ($docs != false) {
-                          ?>
-                          <div class="row" id="ltritem<?php echo $row->id; ?>">
-                            <div class="col-md-12">
-                              <table class="table table-striped">
-                                <thead>
-                                  <tr>
-                                    <th>Name</th>
-                                    <th>File</th>
-                                    <th>Action</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <?php
-                                    foreach ($docs as $row) {
-                                    ?>
-                                  <tr id="ltr<?php echo $row->id; ?>">
-                                    <td><?php echo $row->document_name; ?></td>
-                                    <td>
-                                      <small>
-                                        <a href="<?php echo $row->file_path; ?>" class="badge badge-info">View</a> | <a
-                                          href="<?php echo $row->file_path; ?>" class="badge badge-primary" download>Download</a>
-                                      </small>
-                                    </td>
-                                    <td>
-                                      <a onclick="deleteLetter('<?php echo $row->id; ?>')" href="javascript:void()"
-                                        data-toggle="tooltip" class="btn btn-outline-danger btn-sm" title="Delete"><i
-                                          class="align-middle" data-feather="trash"></i></a>
-
-                                      <!-- <a onclick="updFBInfoFunc('<?php echo $row->id; ?>')" href="javascript:void()" data-toggle="tooltip" class="btn btn-outline-primary btn-sm" title="Edit"><i class="align-middle" data-feather="edit"></i></a> -->
-                                    </td>
-                                  </tr>
-                                  <?php } ?>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <?php } ?>
-                        </div>
-                        <div id="lettertbl">
-                          <?php
-                          $letters = $this->mm->getAllData7(['user_id' => $student->id], 'company_letterheads');
-                          //printArray($letters);
-                          if ($letters != false) {
-                          ?>
-                          <div class="row" id="ltritem<?php echo $row->id; ?>">
-                            <div class="col-md-12">
-                              <table style="font-size:small" id="datatables-basic" class="table table-striped">
-                                <thead>
-                                  <tr>
-                                    <th>S.No.</th>
-                                    <th>Letter No</th>
-                                    <th>Description</th>
-                                    <th>Date</th>
-                                    <th>Signature</th>
-                                    <th>Stamp</th>
-                                    <th>Action</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  <?php
-                                    $i = 1;
-                                    foreach ($letters as $row) {
-                                    ?>
-                                  <tr id="ofrltr<?php echo $row->id; ?>">
-                                    <td><?php echo $i;
-                                    $i++; ?></td>
-                                    <td><?php echo $row->letter_to; ?></td>
-                                    <td>
-                                      <button type="button" class="btn btn-outline-warning btn-sm" data-toggle="modal"
-                                        title="Click to view" data-target="#courseOverview<?php echo $row->id; ?>">
-                                        view
-                                      </button>
-                                      <div class="modal fade" id="courseOverview<?php echo $row->id; ?>" tabindex="-1"
-                                        role="dialog" aria-hidden="true">
-                                        <div class="modal-dialog modal-dialog-centered" role="document">
-                                          <div class="modal-content">
-                                            <div class="modal-header">
-                                              <h5 class="modal-title">Description</h5>
-                                              <button type="button" class="close" data-dismiss="modal"
-                                                aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                              </button>
-                                            </div>
-                                            <div class="modal-body m-3">
-                                              <p class="mb-0"><?php echo $row->letter_description; ?></p>
-                                            </div>
-                                            <div class="modal-footer">
-                                              <button type="button" class="btn btn-secondary"
-                                                data-dismiss="modal">Close</button>
-                                            </div>
-                                          </div>
-                                        </div>
-                                      </div>
-                                    </td>
-                                    <td><?php echo getFormattedDate($row->created_at, 'd-m-Y | h:i A'); ?></td>
-                                    <td>
-                                      <span>
-                                        <a class="<?php echo $row->signature == 1 ? '' : 'hidden-btn'; ?>" id="signature_on_<?php echo $row->id; ?>"
-                                          onclick="onOffAjax('<?php echo $row->id; ?>','signature','0')"
-                                          data-toggle="tooltip" title="Click to Change Status"><span
-                                            class="badge badge-success">On</span></a>
-
-                                        <a class="<?php echo $row->signature == 0 ? '' : 'hidden-btn'; ?>" id="signature_off_<?php echo $row->id; ?>"
-                                          onclick="onOffAjax('<?php echo $row->id; ?>','signature','1')"
-                                          data-toggle="tooltip" title="Click to Change Status"><span
-                                            class="badge badge-danger">Off</span></a>
-                                      </span>
-                                    </td>
-                                    <td>
-                                      <span>
-                                        <a class="<?php echo $row->stamp == 1 ? '' : 'hidden-btn'; ?>" id="stamp_on_<?php echo $row->id; ?>"
-                                          onclick="onOffAjax('<?php echo $row->id; ?>','stamp','0')" data-toggle="tooltip"
-                                          title="Click to Change Status"><span class="badge badge-success">On</span></a>
-
-                                        <a class="<?php echo $row->stamp == 0 ? '' : 'hidden-btn'; ?>" id="stamp_off_<?php echo $row->id; ?>"
-                                          onclick="onOffAjax('<?php echo $row->id; ?>','stamp','1')" data-toggle="tooltip"
-                                          title="Click to Change Status"><span class="badge badge-danger">Off</span></a>
-                                      </span>
-                                    </td>
-                                    <td>
-                                      <a target="_blank" href="<?php echo base_url('Invoice/view_letterhead/'); ?><?php echo $row->id; ?>"
-                                        data-toggle="tooltip" class="btn btn-outline-faraz btn-sm"
-                                        title="View">View</a>
-                                      <br>
-                                      <a target="_blank" href="<?php echo base_url('Invoice/print_letterhead/'); ?><?php echo $row->id; ?>"
-                                        data-toggle="tooltip" class="btn btn-outline-faraz btn-sm"
-                                        title="Print">Print</a>
-
-                                      <a target="_blank" href="<?php echo base_url('Invoice/letter_head/' . $this->uri->segment(3)); ?>/update/<?php echo $row->id; ?>"
-                                        data-toggle="tooltip" class="btn btn-outline-primary btn-sm" title="Edit"><i
-                                          class="align-middle" data-feather="edit"></i></a>
-
-                                      <a href="javascript:void()" onclick="DeleteOfferLetter('<?php echo $row->id; ?>')"
-                                        data-toggle="tooltip" class="btn btn-outline-danger btn-sm" title="Edit"><i
-                                          class="align-middle" data-feather="trash"></i></a>
-                                    </td>
-                                  </tr>
-                                  <?php } ?>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                          <?php } ?>
                         </div>
                       </div>
                     </div>
-                    <!-- DOCUMENTS END -->
-
-                    <br>
-                    <br>
-                    <br>
+                    <!-- ADDITIONAL QUALIFICATIONS END -->
+                    <hr>
+                    <!-- Background Information END -->
+                    <div>
+                      <div class="card-header">
+                        <h4>
+                          Background Information
+                        </h4>
+                      </div>
+                      <div class="card-body">
+                        <div>
+                          <form action="<?php echo base_url('Common/updBackInfo'); ?>" method="post">
+                            <input type="hidden" name="id" value="<?php echo $student->id; ?>">
+                            <input type="hidden" name="retpath" value="<?php echo $this->uri->uri_string(); ?>">
+                            <div class="row">
+                              <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label sr-onl">Have you been refused a visa from Canada, the USA, the
+                                  United
+                                  Kingdom, New Zealand or Australia?</label>
+                                <select class="form-control select2" name="refused_visa">
+                                  <option value="" <?php echo $student->refused_visa == '' ? 'Selected' : ''; ?>>Select</option>
+                                  <option value="Yes" <?php echo $student->refused_visa == 'Yes' ? 'Selected' : ''; ?>>Yes</option>
+                                  <option value="No" <?php echo $student->refused_visa == 'No' ? 'Selected' : ''; ?>>No</option>
+                                </select>
+                              </div>
+                              <div class="form-group col-md-6 col-sm-12">
+                                <label class="form-label sr-onl">Do you have a valid Study Permit / Visa?</label>
+                                <select class="form-control select2" name="valid_study_permit">
+                                  <option value="" <?php echo $student->valid_study_permit == '' ? 'Selected' : ''; ?>>Select</option>
+                                  <option value="Yes" <?php echo $student->valid_study_permit == 'Yes' ? 'Selected' : ''; ?>>Yes
+                                  </option>
+                                  <option value="No" <?php echo $student->valid_study_permit == 'No' ? 'Selected' : ''; ?>>No</option>
+                                </select>
+                              </div>
+                              <div class="form-group col-md-12 col-sm-12">
+                                <label class="form-label sr-onl">If you answered "Yes" to any of the questions above,
+                                  please provide
+                                  more details below:</label>
+                                <textarea class="form-control" name="visa_note"><?php echo $student->visa_note; ?></textarea>
+                              </div>
+                              <div class="form-group col-md-12 col-sm-12">
+                                <button style="float:right;" type="submit" class="btn btn-primary">Save</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- Background Information END -->
                   </div>
                 </div>
               </div>

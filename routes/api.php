@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\admin\LevelC;
+use App\Http\Controllers\api\ApplicationDetailAc;
 use App\Http\Controllers\api\ApplyCollegeAc;
 use App\Http\Controllers\api\BlogAc;
 use App\Http\Controllers\api\DestinationAc;
@@ -90,4 +91,7 @@ Route::prefix('/student')->group(function () {
   Route::get('/applied-colleges/{student_id}', [ApplyCollegeAc::class, 'colleges']);
   Route::get('/check-applied-college/{university_id}/{student_id}', [ApplyCollegeAc::class, 'check']);
   Route::get('/delete-applied-college/{id}', [ApplyCollegeAc::class, 'delete']);
+
+  Route::get('/application-details/{application_id}/{token}', [ApplicationDetailAc::class, 'applicationDetails']);
+  Route::get('/notes/{application_id}/{token}', [ApplicationDetailAc::class, 'notes']);
 });
