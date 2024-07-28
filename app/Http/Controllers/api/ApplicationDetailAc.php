@@ -21,7 +21,7 @@ class ApplicationDetailAc extends Controller
   public function notes($application_id, $token)
   {
     $app = AppliedCollege::where('id', $application_id)->where('token', $token)->firstOrFail();
-    $notes = ApplicationNote::where('id', $app->id)->orderBy('id', 'desc')->get();
+    $notes = ApplicationNote::where('application_id', $app->id)->orderBy('id', 'desc')->get();
     if ($notes) {
       return response()->json($notes);
     } else {
