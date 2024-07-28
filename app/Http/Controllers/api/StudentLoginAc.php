@@ -236,7 +236,7 @@ class StudentLoginAc extends Controller
       return response()->json(['status' => 'failed', 'message' => 'Invalid Link']);
     } else {
       if ($current_time > $field->otp_expire_at) {
-        return response()->json(['status' => 'failed', 'message' => 'Invalid Link']);
+        return response()->json(['status' => 'failed', 'message' => 'This link has been expired. Request new one.']);
       } else {
         $lc = $field->login_count == '' ? 0 : $field->login_count + 1;
         $field->login_count = $lc;

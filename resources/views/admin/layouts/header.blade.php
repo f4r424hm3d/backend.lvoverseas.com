@@ -213,24 +213,51 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" href="{{ url('admin') }}" id="topnav-dashboard"
                   role="button">
-                  <i data-feather="home"></i><span data-key="t-dashboards">Dashboard</span>
+                  <span data-key="t-dashboards">Dashboard</span>
+                </a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
+
+                  <span data-key="t-extra-pages">
+                    Leads
+                  </span>
+                  <div class="arrow-down"></div>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="topnav-more">
+                  <div class="dropdown">
+                    <a class="dropdown-item dropdown-toggle arrow-none" href="{{ aurl('leads/') }}" id="topnav-auth"
+                      role="button">
+                      <span data-key="t-authentication">Leads</span>
+                    </a>
+                    <a class="dropdown-item dropdown-toggle arrow-none" href="{{ aurl('leads/add') }}"
+                      id="topnav-auth" role="button">
+                      <span data-key="t-authentication">Add Lead</span>
+                    </a>
+                  </div>
+                </div>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle arrow-none" href="{{ aurl('application-statuses') }}"
+                  id="topnav-dashboard" role="button">
+                  <span data-key="t-dashboards">Application Status</span>
                 </a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" href="{{ aurl('services') }}" id="topnav-dashboard"
                   role="button">
-                  <i data-feather="file-text"></i><span data-key="t-dashboards">Services</span>
+                  <span data-key="t-dashboards">Services</span>
                 </a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" href="{{ aurl('gallery') }}" id="topnav-dashboard"
                   role="button">
-                  <i data-feather="file-text"></i><span data-key="t-dashboards">Gallery</span>
+                  <span data-key="t-dashboards">Gallery</span>
                 </a>
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
-                  <i data-feather="file-text"></i>
+
                   <span data-key="t-extra-pages">Blogs</span>
                   <div class="arrow-down"></div>
                 </a>
@@ -249,7 +276,7 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
-                  <i data-feather="file-text"></i>
+
                   <span data-key="t-extra-pages">SEOS</span>
                   <div class="arrow-down"></div>
                 </a>
@@ -268,7 +295,7 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
-                  <i data-feather="file-text"></i>
+
                   <span data-key="t-extra-pages">Destinations</span>
                   <div class="arrow-down"></div>
                 </a>
@@ -287,7 +314,7 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
-                  <i data-feather="file-text"></i>
+
                   <span data-key="t-extra-pages">University</span>
                   <div class="arrow-down"></div>
                 </a>
@@ -306,7 +333,7 @@
               </li>
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle arrow-none" href="#" id="topnav-more" role="button">
-                  <i data-feather="file-text"></i>
+
                   <span data-key="t-extra-pages">More</span>
                   <div class="arrow-down"></div>
                 </a>

@@ -3,6 +3,7 @@
 use App\Http\Controllers\admin\AddressC;
 use App\Http\Controllers\admin\AdminDashboard;
 use App\Http\Controllers\admin\AdminLogin;
+use App\Http\Controllers\admin\ApplicationStatusC;
 use App\Http\Controllers\admin\AuthorC;
 use App\Http\Controllers\admin\DestinationC;
 use App\Http\Controllers\admin\DestinationContentC;
@@ -23,6 +24,7 @@ use App\Http\Controllers\admin\BlogCategoryC;
 use App\Http\Controllers\admin\DynamicPageSeoC;
 use App\Http\Controllers\admin\GalleryC;
 use App\Http\Controllers\admin\InstituteTypeC;
+use App\Http\Controllers\admin\LeadC;
 use App\Http\Controllers\admin\LevelC;
 use App\Http\Controllers\admin\ServiceC;
 use App\Http\Controllers\admin\TestimonialC;
@@ -319,6 +321,28 @@ Route::middleware(['adminLoggedIn'])->group(function () {
       Route::get('/delete/{id}/', [TestimonialC::class, 'delete']);
       Route::get('/update/{id}/', [TestimonialC::class, 'index']);
       Route::post('/update/{id}/', [TestimonialC::class, 'update']);
+    });
+    Route::prefix('/application-statuses')->group(function () {
+      Route::get('/', [ApplicationStatusC::class, 'index']);
+      Route::get('/get-data', [ApplicationStatusC::class, 'getData']);
+      Route::get('/delete/{id}', [ApplicationStatusC::class, 'delete']);
+      Route::post('/store', [ApplicationStatusC::class, 'store']);
+      Route::get('/update/{id}', [ApplicationStatusC::class, 'index']);
+      Route::post('/update/{id}', [ApplicationStatusC::class, 'update']);
+    });
+    Route::prefix('leads')->group(function () {
+      Route::get('', [LeadC::class, 'index']);
+      Route::get('/add', [LeadC::class, 'add']);
+      Route::get('/update/{id}', [LeadC::class, 'add']);
+      Route::post('/update/{id}', [LeadC::class, 'update']);
+      Route::get('/delete/{id}', [LeadC::class, 'delete']);
+      Route::post('/store', [LeadC::class, 'store']);
+      Route::get('get-quick-info', [LeadC::class, 'getQuickInfo']);
+      Route::get('/update-quick-info/', [LeadC::class, 'updateQuickInfo']);
+      Route::get('/fetch-last-updated-record/{id}', [LeadC::class, 'fetchLastRecord']);
+
+      Route::get('/add2', [LeadC::class, 'add2']);
+      Route::post('/store-ajax', [LeadC::class, 'storeAjax']);
     });
   });
 });
