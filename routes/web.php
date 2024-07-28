@@ -27,6 +27,7 @@ use App\Http\Controllers\admin\InstituteTypeC;
 use App\Http\Controllers\admin\LeadC;
 use App\Http\Controllers\admin\LevelC;
 use App\Http\Controllers\admin\ServiceC;
+use App\Http\Controllers\admin\StudentProfileC;
 use App\Http\Controllers\admin\TestimonialC;
 use App\Http\Controllers\admin\UploadFilesC;
 use App\Http\Controllers\front\HomeFc;
@@ -343,6 +344,10 @@ Route::middleware(['adminLoggedIn'])->group(function () {
 
       Route::get('/add2', [LeadC::class, 'add2']);
       Route::post('/store-ajax', [LeadC::class, 'storeAjax']);
+    });
+    Route::prefix('student')->group(function () {
+      Route::get('profile/{student_id}', [StudentProfileC::class, 'index']);
+      Route::get('documents/{student_id}', [StudentProfileC::class, 'documents']);
     });
   });
 });

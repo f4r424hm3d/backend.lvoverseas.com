@@ -166,7 +166,7 @@
                       </td>
                       <td>{{ $i }}</td>
                       <td>
-                        <a href="{{ aurl('user/profile/' . $row->id) }}"
+                        <a href="{{ aurl('student/profile/' . $row->id) }}"
                           class="waves-effect waves-light btn btn-xs btn-outline btn-primary popping-button">
                           <i class="fa fa-user" aria-hidden="true"></i>
                         </a>
