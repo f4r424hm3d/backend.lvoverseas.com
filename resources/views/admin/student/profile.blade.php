@@ -3,6 +3,11 @@
   <title>Profile</title>
 @endpush
 @section('main-section')
+  <style>
+    .hidden-btn {
+      display: none
+    }
+  </style>
   <div class="page-content">
     <div class="container-fluid">
       <div class="row">
@@ -190,8 +195,7 @@
                                 disabled="">
                                 <option value="" <?php echo $student->nationality == '' ? 'Selected' : ''; ?>>Select</option>
                                 <?php
-                                $countrys = $this->mm->getDataByOW('name', 'ASC', ['id !=' => '0'], 'countries');
-                                foreach ($countrys as $c) {
+                                foreach ($countries as $c) {
                                 ?>
                                 <option value="<?php echo $c->name; ?>" <?php echo $student->nationality == $c->name ? 'Selected' : ''; ?>><?php echo $c->name; ?></option>
                                 <?php } ?>
@@ -266,8 +270,7 @@
                                 disabled="">
                                 <option value="" <?php echo $student->state == '' ? 'Selected' : ''; ?>>Select</option>
                                 <?php
-                                $state = $this->mm->getAllData('tbl_state');
-                                foreach ($state as $row) {
+                                foreach ($states as $row) {
                                 ?>
                                 <option value="<?php echo $row->statename; ?>" <?php echo $student->state == $row->statename ? 'Selected' : ''; ?>><?php echo $row->statename; ?>
                                 </option>
@@ -280,8 +283,7 @@
                                 disabled="">
                                 <option value="" <?php echo $student->country == '' ? 'Selected' : ''; ?>>Select</option>
                                 <?php
-                                $countrys = $this->mm->getDataByOW('name', 'ASC', ['id !=' => '0'], 'countries');
-                                foreach ($countrys as $c) {
+                                foreach ($countries as $c) {
                                 ?>
                                 <option value="<?php echo $c->name; ?>" <?php echo $student->country == $c->name ? 'Selected' : ''; ?>><?php echo $c->name; ?></option>
                                 <?php } ?>
@@ -309,8 +311,7 @@
                                 class="form-control pif select2" readonly disabled="">
                                 <option value="" <?php echo $student->country_of_education == '' ? 'Selected' : ''; ?>>Select</option>
                                 <?php
-                                $countrys = $this->mm->getDataByOW('name', 'ASC', ['id !=' => '0'], 'countries');
-                                foreach ($countrys as $c) {
+                                foreach ($countries as $c) {
                                 ?>
                                 <option value="<?php echo $c->name; ?>" <?php echo $student->country_of_education == $c->name ? 'Selected' : ''; ?>><?php echo $c->name; ?>
                                 </option>
@@ -325,8 +326,7 @@
                                 <option value="" <?php echo $student->highest_level_of_education == '' ? 'Selected' : ''; ?>>Select
                                 </option>
                                 <?php
-                                $loe = $this->mm->getDataByOW('id', 'ASC', ['id !=' => '0'], 'tbl_level_of_education');
-                                foreach ($loe as $c) {
+                                foreach ($levels as $c) {
                                 ?>
                                 <option value="<?php echo $c->level; ?>" <?php echo $student->highest_level_of_education == $c->level ? 'Selected' : ''; ?>>
                                   <?php echo $c->level; ?></option>
@@ -437,9 +437,9 @@
                       </div>
                       <div class="card-body">
                         <div id="schoolattendedform" class="hidden-btn">
-                          <form action="<?php echo base_url('Common/addSchool'); ?>" method="post">
+                          <form action="<?php echo url('Common/addSchool'); ?>" method="post">
                             <input type="hidden" name="std_id" value="<?php echo $student->id; ?>">
-                            <input type="hidden" name="retpath" value="<?php echo $this->uri->uri_string(); ?>">
+                            <input type="hidden" name="retpath" value="">
                             <div class="row">
                               <div class="form-group col-md-3 col-sm-12">
                                 <label class="form-label sr-onl" for="country_of_institution">Country of Institution
@@ -448,8 +448,7 @@
                                   class="form-control select2" required>
                                   <option value="">Select</option>
                                   <?php
-                                  $countrys = $this->mm->getDataByOW('name', 'ASC', ['id !=' => '0'], 'countries');
-                                  foreach ($countrys as $c) {
+                                  foreach ($countries as $c) {
                                   ?>
                                   <option value="<?php echo $c->name; ?>"><?php echo $c->name; ?></option>
                                   <?php } ?>
@@ -468,8 +467,7 @@
                                   required>
                                   <option value="">Select</option>
                                   <?php
-                                  $loe = $this->mm->getDataByOW('id', 'ASC', ['id !=' => '0'], 'tbl_level_of_education');
-                                  foreach ($loe as $c) {
+                                  foreach ($levels as $c) {
                                   ?>
                                   <option value="<?php echo $c->level; ?>"><?php echo $c->level; ?></option>
                                   <?php } ?>
@@ -564,8 +562,7 @@
                                 <select name="state" id="sstate" class="form-control select2">
                                   <option value="">Select</option>
                                   <?php
-                                  $state = $this->mm->getAllData('tbl_state');
-                                  foreach ($state as $row) {
+                                  foreach ($states as $row) {
                                   ?>
                                   <option value="<?php echo $row->statename; ?>"><?php echo $row->statename; ?></option>
                                   <?php } ?>
@@ -586,8 +583,7 @@
                         </div>
                         <div id="schoolattendedtbl">
                           <?php
-                          $schools = $this->mm->getAllData7(['std_id' => $student->id], 'student_schools');
-                          foreach ($schools as $row) {
+                          foreach ($student->schools as $row) {
                           ?>
                           <div class="row" id="schitem<?php echo $row->id; ?>">
                             <div class="col-md-4">
@@ -626,9 +622,9 @@
                             </div>
                           </div>
                           <div class="hidden-btn" id="schitemeditform<?php echo $row->id; ?>">
-                            <form action="<?php echo base_url('Common/updSchool'); ?>" method="post">
+                            <form action="<?php echo url('Common/updSchool'); ?>" method="post">
                               <input type="hidden" name="id" value="<?php echo $row->id; ?>">
-                              <input type="hidden" name="retpath" value="<?php echo $this->uri->uri_string(); ?>">
+                              <input type="hidden" name="retpath" value="">
                               <div class="row">
                                 <div class="form-group col-md-3 col-sm-12">
                                   <label class="form-label sr-onl" for="country_of_institution">Country of Institution
@@ -636,8 +632,7 @@
                                   <select name="country_of_institution" class="form-control select2" required>
                                     <option value="">Select</option>
                                     <?php
-                                      $countrys = $this->mm->getDataByOW('name', 'ASC', ['id !=' => '0'], 'countries');
-                                      foreach ($countrys as $c) {
+                                      foreach ($countries as $c) {
                                       ?>
                                     <option value="<?php echo $c->name; ?>" <?php echo $row->country_of_institution == $c->name ? 'Selected' : ''; ?>>
                                       <?php echo $c->name; ?></option>
@@ -656,8 +651,7 @@
                                   <select name="level_of_education" class="form-control select2" required>
                                     <option value="">Select</option>
                                     <?php
-                                      $loe = $this->mm->getDataByOW('id', 'ASC', ['id !=' => '0'], 'tbl_level_of_education');
-                                      foreach ($loe as $c) {
+                                      foreach ($levels as $c) {
                                       ?>
                                     <option value="<?php echo $c->level; ?>" <?php echo $row->level_of_education == $c->level ? 'Selected' : ''; ?>><?php echo $c->level; ?>
                                     </option>
@@ -755,8 +749,7 @@
                                   <select name="state" class="form-control select2">
                                     <option value="">Select</option>
                                     <?php
-                                      $state = $this->mm->getAllData('tbl_state');
-                                      foreach ($state as $stt) {
+                                      foreach ($states as $stt) {
                                       ?>
                                     <option value="<?php echo $stt->statename; ?>" <?php echo $row->state == $stt->statename ? 'Selected' : ''; ?>><?php echo $stt->statename; ?>
                                     </option>
@@ -786,192 +779,6 @@
                       </div>
                     </div>
                     <!-- SCHOOL ATTENDED END -->
-
-                    <!-- ADDITIONAL QUALIFICATIONS START -->
-                    <div>
-                      <div class="card-header">
-                        <h4>
-                          Additional Qualifications
-                        </h4>
-                      </div>
-                      <div class="card-body">
-                        <div>
-                          <form action="<?php echo base_url('Common/updGre'); ?>" method="post">
-                            <input type="hidden" name="id" value="<?php echo $student->id; ?>">
-                            <input type="hidden" name="retpath" value="<?php echo $this->uri->uri_string(); ?>">
-                            <div class="row">
-                              <div class="form-group col-md-3 col-sm-12">
-                                <div class="input-group">
-                                  <input type="text" class="form-control" placeholder="I have GRE exam scores">
-                                  <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                      <input type="checkbox" name="gre" id="gre" <?php echo $student->gre == '1' ? 'checked' : ''; ?>>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="<?php echo $student->gre == '0' ? 'hidden-btn' : ''; ?>" id="greDiv">
-                              <div class="row">
-                                <div class="form-group col-md-3 col-sm-12">
-                                  <label class="form-label sr-onl">GRE Exam Date <span class="rqr">*</span></label>
-                                  <input type="date" class="form-control" name="gre_exam_date"
-                                    placeholder="Exam Date" value="<?php echo $student->gre_exam_date; ?>" required>
-                                </div>
-                                <div class="form-group col-md-3 col-sm-12">
-                                  <label class="form-label sr-onl">Verbal <span class="rqr">*</span></label>
-                                  <input type="number" class="form-control" name="gre_v_score" placeholder="Score"
-                                    value="<?php echo $student->gre_v_score; ?>" max="170" step="any" min="0"
-                                    required>
-                                  <input type="number" class="form-control" name="gre_v_rank" placeholder="Rank"
-                                    value="<?php echo $student->gre_v_rank; ?>" step="any" max="100" min="0"
-                                    required>
-                                </div>
-                                <div class="form-group col-md-3 col-sm-12">
-                                  <label class="form-label sr-onl">Quantitative <span class="rqr">*</span></label>
-                                  <input type="number" class="form-control" name="gre_q_score" placeholder="Score"
-                                    value="<?php echo $student->gre_q_score; ?>" max="170" step="any" min="0"
-                                    required>
-                                  <input type="number" class="form-control" name="gre_q_rank" placeholder="Rank"
-                                    value="<?php echo $student->gre_q_rank; ?>" step="any" max="100" min="0"
-                                    required>
-                                </div>
-                                <div class="form-group col-md-3 col-sm-12">
-                                  <label class="form-label sr-onl">Writing <span class="rqr">*</span></label>
-                                  <input type="number" class="form-control" name="gre_w_score" placeholder="Score"
-                                    value="<?php echo $student->gre_w_score; ?>" max="6" step="any" min="0"
-                                    required>
-                                  <input type="number" class="form-control" name="gre_w_rank" placeholder="Rank"
-                                    value="<?php echo $student->gre_w_rank; ?>" step="any" max="100" min="0"
-                                    required>
-                                </div>
-                                <div class="form-group col-md-12 col-sm-12">
-                                  <button style="float:right;" type="submit" class="btn btn-primary">Update</button>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
-                          <hr>
-                          <form action="<?php echo base_url('Common/updGmat'); ?>" method="post">
-                            <input type="hidden" name="id" value="<?php echo $student->id; ?>">
-                            <input type="hidden" name="retpath" value="<?php echo $this->uri->uri_string(); ?>">
-                            <div class="row">
-                              <div class="form-group col-md-3 col-sm-12">
-                                <div class="input-group">
-                                  <input type="text" class="form-control" placeholder="I have GMAT exam scores">
-                                  <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                      <input type="checkbox" name="gmat" id="gmat" <?php echo $student->gmat == '1' ? 'checked' : ''; ?>>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="<?php echo $student->gmat == '0' ? 'hidden-btn' : ''; ?>" id="gmatDiv">
-                              <div class="row">
-                                <div class="form-group col-md-2 col-sm-12">
-                                  <label class="form-label sr-onl">GMAT Exam Date <span class="rqr">*</span></label>
-                                  <input type="date" class="form-control" name="gmat_exam_date"
-                                    placeholder="Exam Date" value="<?php echo $student->gmat_exam_date; ?>" required>
-                                </div>
-                                <div class="form-group col-md-2 col-sm-12">
-                                  <label class="form-label sr-onl">Verbal <span class="rqr">*</span></label>
-                                  <input type="number" class="form-control" name="gmat_v_score" placeholder="Score"
-                                    value="<?php echo $student->gmat_v_score; ?>" max="51" min="0" step="any"
-                                    required>
-                                  <input type="number" class="form-control" name="gmat_v_rank" placeholder="Rank"
-                                    value="<?php echo $student->gmat_v_rank; ?>" step="any" max="100" min="0"
-                                    required>
-                                </div>
-                                <div class="form-group col-md-2 col-sm-12">
-                                  <label class="form-label sr-onl">Quantitative <span class="rqr">*</span></label>
-                                  <input type="number" class="form-control" name="gmat_q_score" placeholder="Score"
-                                    value="<?php echo $student->gmat_q_score; ?>" max="51" min="0" step="any"
-                                    required>
-                                  <input type="number" class="form-control" name="gmat_q_rank" placeholder="Rank"
-                                    value="<?php echo $student->gmat_q_rank; ?>" step="any" max="100" min="0"
-                                    required>
-                                </div>
-                                <div class="form-group col-md-2 col-sm-12">
-                                  <label class="form-label sr-onl">Writing <span class="rqr">*</span></label>
-                                  <input type="number" class="form-control" name="gmat_w_score" placeholder="Score"
-                                    value="<?php echo $student->gmat_w_score; ?>" max="6" min="0" step="any"
-                                    required>
-                                  <input type="number" class="form-control" name="gmat_w_rank" placeholder="Rank"
-                                    value="<?php echo $student->gmat_w_rank; ?>" step="any" max="100" min="0"
-                                    required>
-                                </div>
-                                <div class="form-group col-md-2 col-sm-12">
-                                  <label class="form-label sr-onl">Integrated reasoning <span
-                                      class="rqr">*</span></label>
-                                  <input type="number" class="form-control" name="gmat_ir_score" placeholder="Score"
-                                    value="<?php echo $student->gmat_ir_score; ?>" max="8" min="0" step="any">
-                                  <input type="number" class="form-control" name="gmat_ir_rank" placeholder="Rank"
-                                    value="<?php echo $student->gmat_ir_rank; ?>" step="any" max="100" min="0">
-                                </div>
-                                <div class="form-group col-md-2 col-sm-12">
-                                  <label class="form-label sr-onl">Total <span class="rqr">*</span></label>
-                                  <input type="number" class="form-control" name="gmat_total_score"
-                                    placeholder="Score" value="<?php echo $student->gmat_total_score; ?>" min="200"
-                                    max="800" step="any" required>
-                                  <input type="number" class="form-control" name="gmat_total_rank"
-                                    placeholder="Rank" value="<?php echo $student->gmat_total_rank; ?>" step="any" max="100"
-                                    min="0" required>
-                                </div>
-                                <div class="form-group col-md-12 col-sm-12">
-                                  <button style="float:right;" type="submit"
-                                    class="btn btn-primary">Update</button>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
-                          <hr>
-                          <form action="<?php echo base_url('Common/updSat'); ?>" method="post">
-                            <input type="hidden" name="id" value="<?php echo $student->id; ?>">
-                            <input type="hidden" name="retpath" value="<?php echo $this->uri->uri_string(); ?>">
-                            <div class="row">
-                              <div class="form-group col-md-3 col-sm-12">
-                                <div class="input-group">
-                                  <input type="text" class="form-control" placeholder="I have SAT exam scores">
-                                  <div class="input-group-prepend">
-                                    <div class="input-group-text">
-                                      <input type="checkbox" name="sat" id="sat" <?php echo $student->sat == '1' ? 'checked' : ''; ?>>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="<?php echo $student->sat == '0' ? 'hidden-btn' : ''; ?>" id="satDiv">
-                              <div class="row">
-                                <div class="form-group col-md-3 col-sm-12">
-                                  <label class="form-label sr-onl">SAT Exam Date <span class="rqr">*</span></label>
-                                  <input type="date" class="form-control" name="sat_exam_date"
-                                    placeholder="Exam Date" value="<?php echo $student->sat_exam_date; ?>" required>
-                                </div>
-                                <div class="form-group col-md-3 col-sm-12">
-                                  <label class="form-label sr-onl">Reasoing Test Points <span
-                                      class="rqr">*</span></label>
-                                  <input type="number" class="form-control" name="sat_reasoning_point"
-                                    placeholder="SAT Reasoning Point" value="<?php echo $student->sat_reasoning_point; ?>" step="any"
-                                    min="0" max="1600" required>
-                                </div>
-                                <div class="form-group col-md-3 col-sm-12">
-                                  <label class="form-label sr-onl">SAT Subject Test Point <span
-                                      class="rqr">*</span></label>
-                                  <input type="number" class="form-control" name="sat_subject_point"
-                                    placeholder="SAT Subject Points" value="<?php echo $student->sat_subject_point; ?>" step="any"
-                                    min="0" max="800" required>
-                                </div>
-                                <div class="form-group col-md-12 col-sm-12">
-                                  <button style="float:right;" type="submit" class="btn btn-primary">Save</button>
-                                </div>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ADDITIONAL QUALIFICATIONS END -->
                     <hr>
                     <!-- Background Information END -->
                     <div>
@@ -982,9 +789,9 @@
                       </div>
                       <div class="card-body">
                         <div>
-                          <form action="<?php echo base_url('Common/updBackInfo'); ?>" method="post">
+                          <form action="<?php echo url('Common/updBackInfo'); ?>" method="post">
                             <input type="hidden" name="id" value="<?php echo $student->id; ?>">
-                            <input type="hidden" name="retpath" value="<?php echo $this->uri->uri_string(); ?>">
+                            <input type="hidden" name="retpath" value="">
                             <div class="row">
                               <div class="form-group col-md-6 col-sm-12">
                                 <label class="form-label sr-onl">Have you been refused a visa from Canada, the USA, the
@@ -1064,6 +871,207 @@
       $('.updbtn').show();
       $('.editbtn').hide();
       $("#name,#email,#loginid,#password").removeAttr('readonly');
+    }
+  </script>
+  <script>
+    $(document).ready(function() {
+      testScoreMagic();
+      $("#english_exam_type").on("change", function(event) {
+        testScoreMagic();
+      });
+      gradeSystem();
+      $("#grading_scheme").on("change", function(event) {
+        gradeSystem();
+      });
+    });
+
+
+    function schItemTgl(id) {
+      $("#schitem" + id).toggle();
+      $("#schitemeditform" + id).toggle();
+    }
+
+    function dltsch(id) {
+      var tbl = 'student_schools';
+      var deleteConfirm = confirm("Are you sure?");
+      if (deleteConfirm == true) {
+        if (id != '') {
+          $.ajax({
+            url: "<?php echo url('Common/DeleteAjax'); ?>",
+            method: "POST",
+            data: {
+              id: id,
+              tbl: tbl
+            },
+            success: function(data) {
+              $("#schitem" + id).remove();
+              var msg = 'Record has been deleted successfully.';
+              var ty = 'success';
+              showToast(msg, ty);
+            }
+          });
+        }
+      }
+    }
+
+    function toggleSChForm() {
+      $("#schoolattendedform").toggle();
+    }
+    $(document).ready(function() {
+      $("input[name='graduated_from_this']").on("click", function(event) {
+        var radioValue = $("input[name='graduated_from_this']:checked").val();
+        if (radioValue == '0') {
+          $(".grdf").hide();
+          $("#graduation_date").attr("required", false);
+        } else if (radioValue == '1') {
+          $(".grdf").show();
+          $("#graduation_date").attr("required", true);
+        }
+      });
+      $("input[name='gre']").on("click", function(event) {
+        var radioValue = $("input[name='gre']:checked").val();
+        //alert(radioValue);
+        if (radioValue == undefined) {
+          $("#greDiv").hide();
+        } else if (radioValue == 'on') {
+          $("#greDiv").show();
+        }
+      });
+      $("input[name='gmat']").on("click", function(event) {
+        var radioValue = $("input[name='gmat']:checked").val();
+        //alert(radioValue);
+        if (radioValue == undefined) {
+          $("#gmatDiv").hide();
+        } else if (radioValue == 'on') {
+          $("#gmatDiv").show();
+        }
+      });
+      $("input[name='sat']").on("click", function(event) {
+        var radioValue = $("input[name='sat']:checked").val();
+        //alert(radioValue);
+        if (radioValue == undefined) {
+          $("#satDiv").hide();
+        } else if (radioValue == 'on') {
+          $("#satDiv").show();
+        }
+      });
+    });
+
+    function testScoreMagic() {
+      var eet = $("#english_exam_type").val();
+      if (eet == 'I dont have this' || eet == 'I will provide this later') {
+        $("#date_of_exam_div,#listening_score_div,#reading_score_div,#writing_score_div,#speaking_score_div,#overall_score_div")
+          .hide();
+      }
+      if (eet == 'TOEFL') {
+        $("#listening_score_div,#reading_score_div,#writing_score_div,#speaking_score_div").show();
+        $("#overall_score_div").hide();
+        $("#listening_score,#reading_score,#writing_score,#speaking_score").attr("max", "30");
+      }
+      if (eet == 'IELTS') {
+        $("#date_of_exam_div,#listening_score_div,#reading_score_div,#writing_score_div,#speaking_score_div").show();
+        $("#overall_score_div").hide();
+        $("#listening_score,#reading_score,#writing_score,#speaking_score").attr("max", "9");
+      }
+      if (eet == 'Duolingo English Test') {
+        $("#listening_score_div,#reading_score_div,#writing_score_div,#speaking_score_div").hide();
+        $("#date_of_exam_div,#overall_score_div").show();
+        $("#overall_score").attr("max", "160");
+      }
+      if (eet == 'PTE') {
+        $("#listening_score_div,#reading_score_div,#writing_score_div,#speaking_score_div,#date_of_exam_div,#overall_score_div")
+          .show();
+        $("#listening_score,#reading_score,#writing_score,#speaking_score,#overall_score").attr("max", "90");
+      }
+    }
+
+    function gradeSystem() {
+      var eet = $("#grading_scheme").val();
+      if (eet == 'Percentage scale (0-100)') {
+        $("#grade_average").attr("max", "100");
+      }
+      if (eet == 'Grade Points (10 scale)') {
+        $("#grade_average").attr("max", "10");
+      }
+    }
+
+    $(document).ready(function() {
+      $('#piform,#basicInfoForm').on('submit', function(event) {
+        event.preventDefault();
+        $.ajax({
+          url: "<?php echo url('Common/updateStudentDetail'); ?>",
+          method: "POST",
+          data: new FormData(this),
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function(result) {
+            location.reload(true);
+          }
+        })
+      });
+      $('#loginInfoForm').on('submit', function(event) {
+        event.preventDefault();
+        $.ajax({
+          url: "<?php echo url('Common/updateStudentDetail'); ?>",
+          method: "POST",
+          data: new FormData(this),
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function(result) {
+            location.reload(true);
+          }
+        })
+      });
+      $('#testscoreform').on('submit', function(event) {
+        event.preventDefault();
+        $.ajax({
+          url: "<?php echo url('Common/updateStudentDetail'); ?>",
+          method: "POST",
+          data: new FormData(this),
+          contentType: false,
+          cache: false,
+          processData: false,
+          success: function(result) {
+            location.reload(true);
+          }
+        })
+      });
+    });
+
+    function toggleAllFormAttr(val, ft) {
+      //alert(ft);
+      if (val == 'add') {
+        $('#' + ft + 'tbtn').val('remove');
+        $('.' + ft + 'f').attr('readonly', true);
+        $('.' + ft + 'f').attr('disabled', true);
+      } else {
+        $('#' + ft + 'tbtn').val('add');
+        $('.' + ft + 'f').attr('readonly', false);
+        $('.' + ft + 'f').attr('disabled', false);
+      }
+      $('.' + ft + 'ubtn').toggle();
+    }
+
+    function toggleFormAttr(val) {
+      //alert(val);
+      if (val == 'add') {
+        $('#pitbtn').val('remove');
+        $('.pif').attr('readonly', true);
+        $('.pif').attr('disabled', true);
+      } else {
+        $('#pitbtn').val('add');
+        $('.pif').attr('readonly', false);
+        $('.pif').attr('disabled', false);
+      }
+      $('.piubtn').toggle();
+    }
+
+    function editInfo() {
+      $('.std-bsk-info').attr('readonly', false);
+      $('.std-bsk-info').attr('disabled', false);
+      $('#sbmtBtntr').show();
     }
   </script>
 @endsection

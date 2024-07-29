@@ -1,3 +1,6 @@
+@php
+  $menus = ['Profile' => 'profile', 'Documents' => 'documents', 'Applications' => 'applications'];
+@endphp
 <div class="card-header">
   <div class="row">
     <div class="col-sm order-2 order-sm-1">
@@ -22,7 +25,13 @@
     <div class="col-sm-auto order-1 order-sm-2">
       <div class="d-flex align-items-start justify-content-end gap-2">
         <div>
-          <a href="{{ url('admin/student/profile/' . $student->id) }}"
+          @foreach ($menus as $key => $value)
+            <a href="{{ url('admin/student/' . $value . '/' . $student->id) }}"
+              class="btn {{ $value == $active ? 'btn-success' : 'btn-soft-light' }}">
+              {{ $key }}
+            </a>
+          @endforeach
+          {{-- <a href="{{ url('admin/student/profile/' . $student->id) }}"
             class="btn {{ Request::segment(3) == 'profile' ? 'btn-success' : 'btn-soft-light' }}">
             Profile
           </a>
@@ -30,6 +39,10 @@
             class="btn {{ Request::segment(3) == 'documents' ? 'btn-success' : 'btn-soft-light' }}">
             Documents
           </a>
+          <a href="{{ url('admin/student/applications/' . $student->id) }}"
+            class="btn {{ Request::segment(3) == 'applications' ? 'btn-success' : 'btn-soft-light' }}">
+            Applications
+          </a> --}}
         </div>
       </div>
     </div>

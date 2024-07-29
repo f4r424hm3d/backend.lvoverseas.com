@@ -346,8 +346,11 @@ Route::middleware(['adminLoggedIn'])->group(function () {
       Route::post('/store-ajax', [LeadC::class, 'storeAjax']);
     });
     Route::prefix('student')->group(function () {
+      Route::post('add-note', [StudentProfileC::class, 'addNote']);
       Route::get('profile/{student_id}', [StudentProfileC::class, 'index']);
       Route::get('documents/{student_id}', [StudentProfileC::class, 'documents']);
+      Route::get('applications/{student_id}', [StudentProfileC::class, 'applications']);
+      Route::get('application/{id}', [StudentProfileC::class, 'application']);
     });
   });
 });
