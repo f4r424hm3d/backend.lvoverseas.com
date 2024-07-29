@@ -94,4 +94,5 @@ Route::prefix('/student')->group(function () {
 
   Route::get('/application-details/{application_id}/{token}', [ApplicationDetailAc::class, 'applicationDetails']);
   Route::get('/notes/{application_id}/{token}', [ApplicationDetailAc::class, 'notes']);
+  Route::post('/add-note', [ApplicationDetailAc::class, 'addNote']);
 });
