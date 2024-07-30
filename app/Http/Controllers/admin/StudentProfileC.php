@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\ApplicationNote;
+use App\Models\ApplicationStatus;
 use App\Models\AppliedCollege;
 use App\Models\Country;
 use App\Models\Level;
@@ -46,10 +47,11 @@ class StudentProfileC extends Controller
     $application = AppliedCollege::findOrFail($id);
     $notes = ApplicationNote::where('application_id', $application->id)->orderBy('id', 'desc')->get();
     $student = Student::find($application->student_id);
+    $statuses = ApplicationStatus::all();
     $active = 'applications';
     $page_title = 'Application Details';
 
-    $data = compact('student', 'active', 'application', 'page_title', 'notes');
+    $data = compact('student', 'active', 'application', 'page_title', 'notes', 'statuses');
     return view('admin.student.application')->with($data);
   }
   public function addNote(Request $request)
@@ -85,5 +87,17 @@ class StudentProfileC extends Controller
     $field->save();
     session()->flash('smsg', 'New record has been added successfully.');
     return redirect('admin/student/application/' . $request->application_id);
+  }
+  public function updateStatus(Request $request)
+  {
+    $application = AppliedCollege::find($request->application_id);
+
+    if ($application) {
+      $application->application_status_id = $request->status_id;
+      $application->save();
+      return response()->json(['success' => true]);
+    } else {
+      return response()->json(['success' => false], 404);
+    }
   }
 }

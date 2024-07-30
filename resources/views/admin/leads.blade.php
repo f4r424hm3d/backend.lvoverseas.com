@@ -194,10 +194,10 @@
                       </td>
                       <td>
                         <b>Country</b> : {{ $row->interested_destination }} <br>
-                        <b>Visa Type</b> : {{ $row->interested_visa_type }} <br>
+                        <b>University</b> : {{ $row->intrested_university }} <br>
                       </td>
                       <td>
-                        {{ $row->entry_type }}
+                        {{ $row->source }}
                       </td>
                     </tr>
                     @php

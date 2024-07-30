@@ -347,6 +347,9 @@ Route::middleware(['adminLoggedIn'])->group(function () {
     });
     Route::prefix('student')->group(function () {
       Route::post('add-note', [StudentProfileC::class, 'addNote']);
+      Route::post('update-application-status', [StudentProfileC::class, 'updateStatus']);
+      Route::post('update-personal-info', [StudentProfileC::class, 'updatePersonalInfo']);
+
       Route::get('profile/{student_id}', [StudentProfileC::class, 'index']);
       Route::get('documents/{student_id}', [StudentProfileC::class, 'documents']);
       Route::get('applications/{student_id}', [StudentProfileC::class, 'applications']);

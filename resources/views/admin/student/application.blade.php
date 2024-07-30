@@ -57,7 +57,17 @@
                       </tr>
                       <tr>
                         <td>Status</td>
-                        <th>{{ $application->status->status ?? 'Processing' }}</th>
+                        <th>
+                          <select name="application_status" id="application_status" class="form-control">
+                            <option value="">Select</option>
+                            @foreach ($statuses as $status)
+                              <option value="{{ $status->id }}"
+                                {{ $status->id == $application->application_status_id ? 'selected' : '' }}>
+                                {{ $status->status }}
+                              </option>
+                            @endforeach
+                          </select>
+                        </th>
                       </tr>
                     </tbody>
                   </table>
@@ -193,7 +203,42 @@
     </div>
   </div>
   <script>
+    $(document).ready(function() {
+      $('#application_status').change(function() {
+        var status_id = $(this).val();
+        var application_id = {{ $application->id }}; // Assuming $application is passed to the view
+
+        $.ajax({
+          url: "{{ url('admin/student/update-application-status') }}",
+          type: 'POST',
+          data: {
+            _token: '{{ csrf_token() }}',
+            application_id: application_id,
+            status_id: status_id
+          },
+          success: function(response) {
+            if (response.success) {
+              // alert('Status updated successfully.');
+              var h = 'Success';
+              var msg = 'Status updated successfully.';
+              var type = 'success';
+            } else {
+              var h = 'Failed';
+              var msg = 'Failed to update status.';
+              var type = 'danger';
+              // alert('Failed to update status.');
+            }
+            showToastr(h, msg, type);
+          },
+          error: function(response) {
+            alert('An error occurred.');
+          }
+        });
+      });
+    });
+
     CKEDITOR.replace("message_note");
+
     $(document).ready(function() {
       $('#addNoteBtn').click(function() {
         $('#addNote').show();
